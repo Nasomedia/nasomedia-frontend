@@ -1,9 +1,10 @@
 import { Container, Stack, Heading, Text } from "@chakra-ui/layout";
 import Head from "next/head";
+import { MainLayout } from "../src/layout/MainLayout";
 
 export default function Home() {
   return (
-    <>
+    <MainLayout>
       <Head>
         <title>NASOMEDIA</title>
         <link rel="icon" href="/favicon.ico" />
@@ -23,6 +24,6 @@ export default function Home() {
           </Text>
         </Stack>
       </Container>
-    </>
+    </MainLayout>
   );
 }
