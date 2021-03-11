@@ -1,7 +1,13 @@
 // import '../styles/globals.css'
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
+import Router from "next/router";
 import theme from "../src/components/theme";
+import NProgress from "nprogress";
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
