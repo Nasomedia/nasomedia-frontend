@@ -7,7 +7,6 @@ export default function Home() {
     <MainLayout>
       <Head>
         <title>NASOMEDIA</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
         <Stack>
