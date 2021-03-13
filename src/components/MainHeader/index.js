@@ -75,6 +75,7 @@ export const MainHeader = () => {
               >
                 <Image
                   src="/icons/nasoicon.png"
+                  alt="logo"
                   w={{ base: 8 }}
                   h={{ base: 8 }}
                 />
