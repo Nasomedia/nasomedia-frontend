@@ -6,7 +6,7 @@ export const MainLayout = ({ children }) => {
   return (
     <>
       <MainHeader />
-      <Container maxW={"7xl"} flex={"1 0 auto"} py={8} mt={20}>
+      <Container maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
         {children}
       </Container>
     </>
