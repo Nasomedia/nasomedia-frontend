@@ -1,46 +1,17 @@
-import {
-  Stack,
-  Box,
-  Link,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Search2Icon } from "@chakra-ui/icons";
+import { Stack, useColorModeValue } from "@chakra-ui/react";
+import DesktopNavButton from "./DesktopNavButton";
 
 export const DesktopNavRight = (props) => {
+  const user = null;
   return (
     <Stack direction={"row"} spacing={4} {...props}>
-      <Box>
-        <NextLink href={"/test"}>
-          <Link
-            p={2}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={useColorModeValue("gray.600", "gray.200")}
-            _hover={{
-              textDecoration: "none",
-              color: useColorModeValue("gray.800", "white"),
-            }}
-          >
-            {`테스트`}
-          </Link>
-        </NextLink>
-      </Box>
-      <Box>
-        <NextLink href={""}>
-          <Link
-            p={2}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={useColorModeValue("gray.600", "gray.200")}
-            _hover={{
-              textDecoration: "none",
-              color: useColorModeValue("gray.800", "white"),
-            }}
-          >
-            {`테스트2`}
-          </Link>
-        </NextLink>
-      </Box>
+      <DesktopNavButton href={"search"}>
+        <Search2Icon />
+      </DesktopNavButton>
+      {user ? null : (
+        <DesktopNavButton href="login">로그인/가입</DesktopNavButton>
+      )}
     </Stack>
   );
 };

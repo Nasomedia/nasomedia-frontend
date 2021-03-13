@@ -19,9 +19,9 @@ import { DesktopNavLeft } from "./DesktopNavLeft";
 import { DesktopNavRight } from "./DesktopNavRight";
 
 export const MainHeader = () => {
-  const { isOpen: isMobileNavOpen, onToggle } = useDisclosure();
+  const { isOpen: isMobileNavOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const onMobileNavToggle = onToggle;
+  const onMobileNavToggle = onOpen;
   return (
     <Box>
       <Flex
@@ -85,15 +85,17 @@ export const MainHeader = () => {
                 >
                   나소미디어
                 </Heading>
-                <Stack
-                  direction={"row"}
-                  align={"center"}
-                  spacing={8}
-                  flex={{ base: 1, md: "auto" }}
-                  justify={"flex-end"}
-                >
-                  <DesktopNavLeft display={{ base: "none", md: "flex" }} />
-                </Stack>
+                <object>
+                  <Stack
+                    direction={"row"}
+                    align={"center"}
+                    spacing={8}
+                    flex={{ base: 1, md: "auto" }}
+                    justify={"flex-end"}
+                  >
+                    <DesktopNavLeft display={{ base: "none", md: "flex" }} />
+                  </Stack>
+                </object>
               </Stack>
             </NextLink>
           </Flex>
@@ -105,7 +107,10 @@ export const MainHeader = () => {
             flex={{ base: 1, md: "auto" }}
             justify={"flex-end"}
           >
-            <DesktopNavRight display={{ base: "none", md: "flex" }} />
+            <DesktopNavRight
+              user={null}
+              display={{ base: "none", md: "flex" }}
+            />
             <IconButton
               size={"sm"}
               variant={"ghost"}
@@ -122,7 +127,7 @@ export const MainHeader = () => {
           </Stack>
         </Container>
       </Flex>
-      <MobileNav isOpen={isMobileNavOpen} />
+      <MobileNav isOpen={isMobileNavOpen} onClose={onClose} />
     </Box>
   );
 };

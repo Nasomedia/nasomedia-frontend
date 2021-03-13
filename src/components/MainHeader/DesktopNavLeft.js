@@ -1,46 +1,12 @@
-import {
-  Stack,
-  Box,
-  Link,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Stack } from "@chakra-ui/react";
+import DesktopNavButton from "./DesktopNavButton";
 
 export const DesktopNavLeft = (props) => {
   return (
     <Stack direction={"row"} spacing={4} {...props}>
-      <Box>
-        <NextLink href={"/test"}>
-          <Link
-            p={2}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={useColorModeValue("gray.600", "gray.200")}
-            _hover={{
-              textDecoration: "none",
-              color: useColorModeValue("gray.800", "white"),
-            }}
-          >
-            {`테스트`}
-          </Link>
-        </NextLink>
-      </Box>
-      <Box>
-        <NextLink href={"/test"}>
-          <Link
-            p={2}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={useColorModeValue("gray.600", "gray.200")}
-            _hover={{
-              textDecoration: "none",
-              color: useColorModeValue("gray.800", "white"),
-            }}
-          >
-            {`테스트2`}
-          </Link>
-        </NextLink>
-      </Box>
+      <DesktopNavButton href={"/finder"}>상세검색</DesktopNavButton>
+      <DesktopNavButton href={"/update"}>업데이트</DesktopNavButton>
+      <DesktopNavButton href={"/rank"}>랭킹</DesktopNavButton>
     </Stack>
   );
 };
