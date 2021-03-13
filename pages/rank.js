@@ -6,11 +6,11 @@ export default function Home() {
   return (
     <MainLayout>
       <Head>
-        <title>NASOMEDIA</title>
+        <title>랭킹</title>
       </Head>
       <Container>
         <Stack>
-          <Heading>Lorem ipsum dolor sit amet.</Heading>
+          <Heading>랭킹</Heading>
           <Text>
             consectetur adipiscing elit. Vivamus non dictum nisl. Quisque et
             venenatis nunc, ac tincidunt nibh. Vestibulum commodo posuere
