@@ -54,7 +54,7 @@ const DrawerPublicLinks = ({ asPath }) => {
       <NavigationLink asPath={asPath} href={`/update`}>
         업데이트
       </NavigationLink>
-      <NavigationLink asPath={asPath} href={`/ranking`}>
+      <NavigationLink asPath={asPath} href={`/rank`}>
         랭킹
       </NavigationLink>
     </>
