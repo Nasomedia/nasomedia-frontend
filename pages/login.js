@@ -1,4 +1,4 @@
-import { Container, Stack, Heading, Text } from "@chakra-ui/layout";
+import { Stack, Heading, Text } from "@chakra-ui/layout";
 
 export default function Home() {
   return (

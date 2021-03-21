@@ -1,4 +1,4 @@
-import { Container, Stack, Heading, Text } from "@chakra-ui/layout";
+import { Stack, Heading, Text } from "@chakra-ui/layout";
 import Head from "next/head";
 import { MainLayout } from "../src/layout/MainLayout";
 
