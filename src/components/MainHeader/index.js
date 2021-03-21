@@ -86,17 +86,15 @@ export const MainHeader = () => {
                 >
                   나소미디어
                 </Heading>
-                <object>
-                  <Stack
-                    direction={"row"}
-                    align={"center"}
-                    spacing={8}
-                    flex={{ base: 1, md: "auto" }}
-                    justify={"flex-end"}
-                  >
-                    <DesktopNavLeft display={{ base: "none", md: "flex" }} />
-                  </Stack>
-                </object>
+                <Stack
+                  direction={"row"}
+                  align={"center"}
+                  spacing={8}
+                  flex={{ base: 1, md: "auto" }}
+                  justify={"flex-end"}
+                >
+                  <DesktopNavLeft display={{ base: "none", md: "flex" }} />
+                </Stack>
               </Stack>
             </NextLink>
           </Flex>
