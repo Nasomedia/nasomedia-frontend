@@ -6,7 +6,7 @@ export const DesktopNavLeft = (props) => {
     <Stack direction={"row"} spacing={4} {...props}>
       <DesktopNavButton href={"/finder"}>상세검색</DesktopNavButton>
       <DesktopNavButton href={"/update"}>업데이트</DesktopNavButton>
-      <DesktopNavButton href={"/rank"}>랭킹</DesktopNavButton>
+      <DesktopNavButton href={"/ranking"}>랭킹</DesktopNavButton>
     </Stack>
   );
 };
