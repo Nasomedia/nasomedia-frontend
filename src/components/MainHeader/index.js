@@ -6,9 +6,9 @@ import {
   useDisclosure,
   IconButton,
   useColorModeValue,
-  Image,
   useColorMode,
   Heading,
+  Img,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { IoMoon, IoSunny } from "react-icons/io5";
@@ -73,7 +73,7 @@ export const MainHeader = () => {
                 alignItems={"center"}
                 spacing={{ base: 2, sm: 4 }}
               >
-                <Image
+                <Img
                   src="/icons/nasoicon.png"
                   alt="logo"
                   w={{ base: 8 }}
