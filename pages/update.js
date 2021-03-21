@@ -8,7 +8,6 @@ export default function Home() {
       <Head>
         <title>업데이트된 목록</title>
       </Head>
-      <Container>
         <Stack>
           <Heading>업데이트</Heading>
           <Text>
@@ -33,7 +32,6 @@ export default function Home() {
             In hac habitasse platea dictumst.
           </Text>
         </Stack>
-      </Container>
     </MainLayout>
   );
 }
