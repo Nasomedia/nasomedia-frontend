@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
       <Stack spacing={10}>
         <Box>
-          <Heading>Lorem ipsum dolor sit amet.</Heading>
+          <Heading>홈</Heading>
         </Box>
         <TabSeriesList></TabSeriesList>
       </Stack>
