@@ -25,7 +25,7 @@ export const ViewerLayout = ({ children }) => {
   return (
     <>
       <ViewerHeader active={active} />
-      <Container onClick={()=>setActive(!active)} maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
+      <Container onClick={()=>setActive(!active)} maxW={"7xl"} flex={"1 0 auto"} py={4} marginY={14}>
         {children}
       </Container>
       <ViewerFooter active={active} />

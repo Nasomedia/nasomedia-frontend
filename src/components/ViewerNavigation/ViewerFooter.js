@@ -27,7 +27,6 @@ export const ViewerFooter = ({ active }) => {
         minH={active ? "60px" : "0px"}
         borderTop={"1px"}
         borderColor={"gray.100"}
-        //   boxShadow={"sm"}
         zIndex="999"
         justify={"center"}
         css={{
