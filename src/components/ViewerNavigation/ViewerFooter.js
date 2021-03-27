@@ -20,7 +20,6 @@ export const ViewerFooter = ({ active }) => {
       <Flex
         as={"footer"}
         pos={"fixed"}
-        display={!active && "none"}
         bottom="0"
         transition="0.5s"
         overflow="hidden"

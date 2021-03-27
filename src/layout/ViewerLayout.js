@@ -20,16 +20,13 @@ export const ViewerLayout = ({ children }) => {
     else setActive(false);
   }
   useEffect(() => {
-    console.log(active);
-  }, [active]);
-  useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
     console.log("test");
   }, []);
   return (
     <>
       <ViewerHeader active={active} />
-      <Container maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
+      <Container onClick={()=>setActive(!active)} maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
         {children}
       </Container>
       <ViewerFooter active={active} />
