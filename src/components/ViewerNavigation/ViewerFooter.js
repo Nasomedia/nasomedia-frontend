@@ -22,7 +22,6 @@ export const ViewerFooter = ({ isVisible }) => {
         as={"footer"}
         pos={"fixed"}
         bottom="0"
-        transition="0.5s"
         overflow="hidden"
         w={"full"}
         minH={"60px"}

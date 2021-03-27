@@ -8,7 +8,7 @@ class NasoDocument extends Document {
 
   render() {
     return (
-      <Html lang="kr">
+      <Html lang="ko-KR">
         <Head />
         <body>
           <Main />
