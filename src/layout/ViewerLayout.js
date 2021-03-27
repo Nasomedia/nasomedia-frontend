@@ -15,7 +15,7 @@ export const ViewerLayout = ({ children }) => {
       document.body.scrollTop
     );
     let clientHeight = document.documentElement.clientHeight;
-    if (clientHeight + scrollTop === scrollHeight || scrollTop <= 50)
+    if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
       setActive(true);
     else setActive(false);
   }

@@ -22,8 +22,10 @@ export const ViewerFooter = ({ active }) => {
         pos={"fixed"}
         display={!active && "none"}
         bottom="0"
+        transition="0.5s"
+        overflow="hidden"
         w={"full"}
-        minH={"60px"}
+        minH={active ? "60px" : "0px"}
         borderTop={"1px"}
         borderColor={"gray.100"}
         //   boxShadow={"sm"}
