@@ -8,6 +8,7 @@ import {
   Box,
   Spacer,
   useMediaQuery,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -50,20 +51,17 @@ const TabSeriesListTabPanels = () => {
 
 export const TabSeriesList = (props) => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [isSmallerThan440] = useMediaQuery("(max-width: 440px)");
+  const isLargerThan440 = useBreakpointValue({ base: false, sm: true})
   return (
     <Box {...props}>
-      {isSmallerThan440 ? (
-        <Tabs onChange={(index) => setTabIndex(index)} size="sm">
-          <TabSeriesListTabs index={tabIndex} />
-          <TabSeriesListTabPanels />
-        </Tabs>
-      ) : (
-        <Tabs isFitted onChange={(index) => setTabIndex(index)} size="md">
-          <TabSeriesListTabs index={tabIndex} />
-          <TabSeriesListTabPanels />
-        </Tabs>
-      )}
+      <Tabs
+        isFitted={isLargerThan440}
+        onChange={(index) => setTabIndex(index)}
+        size="sm"
+      >
+        <TabSeriesListTabs index={tabIndex} />
+        <TabSeriesListTabPanels />
+      </Tabs>
     </Box>
   );
 };
