@@ -20,12 +20,11 @@ import {
         <Flex
           as={"footer"}
           pos="fixed"
-          bottom="60"
+          bottom="0"
           w={"full"}
           minH={"60px"}
           borderTop={"1px"}
-          borderColor={"gray-100"}
-          backgroundColor={"white"}
+          borderColor={"gray.100"}
         //   boxShadow={"sm"}
           zIndex="999"
           justify={"center"}
