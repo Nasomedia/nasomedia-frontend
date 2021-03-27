@@ -20,10 +20,11 @@ export const ViewerHeader = ({ active }) => {
       <Flex
         as={"header"}
         pos={"fixed"}
-        display={!active && "none"}
+        transition="0.5s"
         top="0"
+        overflow="hidden"
         w={"full"}
-        minH={"60px"}
+        minH={active ? "60px" : "0px"}
         boxShadow={"sm"}
         zIndex="999"
         justify={"center"}

@@ -15,20 +15,17 @@ export const ViewerLayout = ({ children }) => {
       document.body.scrollTop
     );
     let clientHeight = document.documentElement.clientHeight;
-    if (clientHeight + scrollTop === scrollHeight || scrollTop <= 50)
+    if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
       setActive(true);
     else setActive(false);
   }
-  useEffect(() => {
-    console.log(active);
-  }, [active]);
   useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
   }, []);
   return (
     <>
       <ViewerHeader active={active} />
-      <Container maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
+      <Container onClick={()=>setActive(!active)} maxW={"7xl"} flex={"1 0 auto"} py={8} mt={14}>
         {children}
       </Container>
       <ViewerFooter active={active} />
