@@ -12,14 +12,36 @@ import {
   import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
   import { IoMoon, IoSunny } from "react-icons/io5";
   import NextLink from "next/link";
+import { useEffect, useState } from "react";
   
   export const ViewerHeader = () => {
     const { colorMode, toggleColorMode } = useColorMode();
+    const [active ,setActive] = useState(true);
+    function scrollHandler(){
+      let scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight  
+      );
+      let scrollTop = Math.max(
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+      let clientHeight = document.documentElement.clientHeight;
+      if(clientHeight+scrollTop === scrollHeight || scrollTop<=50) setActive(true);
+      else setActive(false);
+    }
+    useEffect(()=>{
+      console.log(active);
+    },[active])
+    useEffect(()=>{
+      window.addEventListener("scroll",scrollHandler);
+      console.log("test");
+    },[])
     return (
       <Box>
         <Flex
           as={"header"}
-          pos="fixed"
+          pos={active ? "fixed" : null}
           top="0"
           w={"full"}
           minH={"60px"}
