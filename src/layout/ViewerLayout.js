@@ -2,6 +2,7 @@ import React from "react";
 import { ViewerHeader, ViewerFooter } from "../components/ViewerNavigation";
 import { Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import ViewerMain from "../components/ViewerMain";
 
 export const ViewerLayout = ({ children }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -25,8 +26,16 @@ export const ViewerLayout = ({ children }) => {
   return (
     <>
       <ViewerHeader isVisible={isVisible} />
-      <Container onClick={()=>setIsVisible(!isVisible)} maxW={"7xl"} flex={"1 0 auto"} py={4} marginY={14}>
-        {children}
+      <Container
+        onClick={() => setIsVisible(!isVisible)}
+        maxW={"7xl"}
+        flex={"1 0 auto"}
+        py={4}
+        px={0}
+        marginY={14}
+      >
+        <Container maxW={"7xl"}>{children}</Container>
+        <ViewerMain></ViewerMain>
       </Container>
       <ViewerFooter isVisible={isVisible} />
     </>
