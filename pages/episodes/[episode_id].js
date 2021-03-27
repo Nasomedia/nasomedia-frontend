@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import ViewerLayout from "../../src/layout/ViewerLayout";
+import { ViewerLayout } from "../../src/layout/ViewerLayout";
 
 const EpisodeView = () => {
   const router = useRouter();
