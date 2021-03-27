@@ -1,43 +1,44 @@
 import {
-    Box,
-    Flex,
-    Container,
-    Stack,
-    IconButton,
-    useColorModeValue,
-    useColorMode,
-    Heading,
-    Img,
-  } from "@chakra-ui/react";
-  import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-  import { IoMoon, IoSunny } from "react-icons/io5";
-  import NextLink from "next/link";
-  
-  export const ViewerFooter = () => {
-    const { colorMode, toggleColorMode } = useColorMode();
-    return (
-      <Box>
-        <Flex
-          as={"footer"}
-          pos="fixed"
-          bottom="0"
-          w={"full"}
-          minH={"60px"}
-          borderTop={"1px"}
-          borderColor={"gray.100"}
+  Box,
+  Flex,
+  Container,
+  Stack,
+  IconButton,
+  useColorModeValue,
+  useColorMode,
+  Heading,
+  Img,
+} from "@chakra-ui/react";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { IoMoon, IoSunny } from "react-icons/io5";
+import NextLink from "next/link";
+
+export const ViewerFooter = ({ active }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <Box>
+      <Flex
+        as={"footer"}
+        pos={"fixed"}
+        display={!active && "none"}
+        bottom="0"
+        w={"full"}
+        minH={"60px"}
+        borderTop={"1px"}
+        borderColor={"gray.100"}
         //   boxShadow={"sm"}
-          zIndex="999"
-          justify={"center"}
-          css={{
-            backdropFilter: "saturate(180%) blur(5px)",
-            backgroundColor: useColorModeValue(
-              "rgba(255, 255, 255, 0.8)",
-              "rgba(26, 32, 44, 0.8)"
-            ),
-          }}
-        >
-          <Container as={Flex} maxW={"7xl"} align={"center"}>
-            {/* <Flex
+        zIndex="999"
+        justify={"center"}
+        css={{
+          backdropFilter: "saturate(180%) blur(5px)",
+          backgroundColor: useColorModeValue(
+            "rgba(255, 255, 255, 0.8)",
+            "rgba(26, 32, 44, 0.8)"
+          ),
+        }}
+      >
+        <Container as={Flex} maxW={"7xl"} align={"center"}>
+          {/* <Flex
               flex={{ base: 1, md: "auto" }}
               ml={{ base: -2 }}
               display={{ base: "flex", md: "none" }}
@@ -93,8 +94,8 @@ import {
                 </Stack>
               </NextLink>
             </Flex> */}
-  
-            {/* <Stack
+
+          {/* <Stack
               direction={"row"}
               align={"center"}
               spacing={8}
@@ -119,10 +120,9 @@ import {
                 }
               />
             </Stack> */}
-          </Container>
-        </Flex>
-        {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}
-      </Box>
-    );
-  };
-  
+        </Container>
+      </Flex>
+      {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}
+    </Box>
+  );
+};
