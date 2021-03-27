@@ -12,19 +12,21 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import NextLink from "next/link";
+import MotionFlex from "../motion/MotionFlex";
 
-export const ViewerFooter = ({ active }) => {
+export const ViewerFooter = ({ isVisible }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box>
-      <Flex
+      <MotionFlex
         as={"footer"}
         pos={"fixed"}
         bottom="0"
         transition="0.5s"
         overflow="hidden"
         w={"full"}
-        minH={active ? "60px" : "0px"}
+        minH={"60px"}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         borderTop={"1px"}
         borderColor={"gray.100"}
         zIndex="999"
@@ -121,7 +123,7 @@ export const ViewerFooter = ({ active }) => {
               />
             </Stack> */}
         </Container>
-      </Flex>
+      </MotionFlex>
       {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}
     </Box>
   );

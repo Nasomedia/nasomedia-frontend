@@ -12,19 +12,20 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import NextLink from "next/link";
+import MotionFlex from "../motion/MotionFlex";
 
-export const ViewerHeader = ({ active }) => {
+export const ViewerHeader = ({ isVisible }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box>
-      <Flex
+      <MotionFlex
         as={"header"}
         pos={"fixed"}
-        transition="0.5s"
         top="0"
         overflow="hidden"
         w={"full"}
-        minH={active ? "60px" : "0px"}
+        minH={"60px"}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         boxShadow={"sm"}
         zIndex="999"
         justify={"center"}
@@ -120,7 +121,7 @@ export const ViewerHeader = ({ active }) => {
               />
             </Stack> */}
         </Container>
-      </Flex>
+      </MotionFlex>
       {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}
     </Box>
   );

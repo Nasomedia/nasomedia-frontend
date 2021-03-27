@@ -4,7 +4,7 @@ import { Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 export const ViewerLayout = ({ children }) => {
-  const [active, setActive] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   function scrollHandler() {
     let scrollHeight = Math.max(
       document.documentElement.scrollHeight,
@@ -16,19 +16,19 @@ export const ViewerLayout = ({ children }) => {
     );
     let clientHeight = document.documentElement.clientHeight;
     if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
-      setActive(true);
-    else setActive(false);
+      setIsVisible(true);
+    else setIsVisible(false);
   }
   useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
   }, []);
   return (
     <>
-      <ViewerHeader active={active} />
-      <Container onClick={()=>setActive(!active)} maxW={"7xl"} flex={"1 0 auto"} py={4} marginY={14}>
+      <ViewerHeader isVisible={isVisible} />
+      <Container onClick={()=>setIsVisible(!isVisible)} maxW={"7xl"} flex={"1 0 auto"} py={4} marginY={14}>
         {children}
       </Container>
-      <ViewerFooter active={active} />
+      <ViewerFooter isVisible={isVisible} />
     </>
   );
 };
