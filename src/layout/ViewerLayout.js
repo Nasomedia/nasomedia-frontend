@@ -24,7 +24,6 @@ export const ViewerLayout = ({ children }) => {
   }, [active]);
   useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
-    console.log("test");
   }, []);
   return (
     <>
