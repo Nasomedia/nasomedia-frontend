@@ -2,7 +2,7 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Flex,
+  VStack,
   Heading,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -15,36 +15,39 @@ export default function Login() {
       width={"full"}
       height={"100vh"}
       bgGradient={useColorModeValue(
-        "linear(to-r, gray.300, purple.400, blue.600)",
-        "rgba(255, 255, 255, 0.8)"
+        "rgba(240, 240, 240, 0.8)",
+        "rgba(26, 32, 44, 0.8)"
       )}
       d="flex"
       alignItems="center"
       justifyContent="center"
     >
-      <Box b borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Flex
-          boxShadow={"sm"}
+      <Box
+        boxShadow={"base"}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+      >
+        <VStack
           zIndex="999"
           maxW={"2xl"}
           minW={"md"}
-          padding={4}
+          padding={14}
           maxH={"2xl"}
           minH={"md"}
           direction={"column"}
           justify={"center"}
           alignItems={"center"}
+          spacing={2}
           css={{
-            opacity: "60%",
-            backdropFilter: "saturate(180%) blur(10px)",
             backgroundColor: useColorModeValue(
               "rgba(255, 255, 255, 0.8)",
-              "rgba(26, 32, 44, 0.8)"
+              "rgba(36, 42, 54, 0.8)"
             ),
           }}
         >
+          <Heading>나소미디어</Heading>
           <Heading
-            mb={4}
             css={{
               opacity: "100%",
             }}
@@ -72,7 +75,7 @@ export default function Login() {
               뒤로가기
             </Button>
           </ButtonGroup>
-        </Flex>
+        </VStack>
       </Box>
     </Box>
   );
