@@ -14,7 +14,10 @@ export default function Login() {
     <Box
       width={"full"}
       height={"100vh"}
-      bgGradient="linear(to-r, gray.300, purple.400, blue.600)"
+      bgGradient={useColorModeValue(
+        "linear(to-r, gray.300, purple.400, blue.600)",
+        "rgba(255, 255, 255, 0.8)"
+      )}
       d="flex"
       alignItems="center"
       justifyContent="center"
