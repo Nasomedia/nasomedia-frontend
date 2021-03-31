@@ -24,21 +24,22 @@ export default function Login() {
     >
       <Box
         boxShadow={"base"}
+        maxW={"2xl"}
         borderWidth="1px"
+        mx={2}
+        minW={"60px"}
+        w={"sm"}
         borderRadius="lg"
-        overflow="hidden"
       >
         <VStack
           zIndex="999"
-          maxW={"2xl"}
-          minW={"md"}
-          padding={14}
-          maxH={"2xl"}
-          minH={"md"}
+          padding={4}
           direction={"column"}
+          h={"100%"}
+          minH={"sm"}
           justify={"center"}
           alignItems={"center"}
-          spacing={2}
+          spacing={5}
           css={{
             backgroundColor: useColorModeValue(
               "rgba(255, 255, 255, 0.8)",
