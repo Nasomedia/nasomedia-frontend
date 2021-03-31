@@ -12,7 +12,7 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import NextLink from "next/link";
-import MotionFlex from "../motion/MotionFlex";
+import MotionFlex from "../../motion/MotionFlex";
 
 export const ViewerHeader = ({ isVisible }) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -33,7 +33,7 @@ export const ViewerHeader = ({ isVisible }) => {
           backdropFilter: "saturate(180%) blur(5px)",
           backgroundColor: useColorModeValue(
             "rgba(255, 255, 255, 0.8)",
-            "rgba(26, 32, 44, 0.8)"
+            "rgba(46, 52, 64, 0.8)"
           ),
         }}
       >

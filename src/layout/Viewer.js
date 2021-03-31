@@ -1,12 +1,15 @@
 import React from "react";
-import { ViewerHeader, ViewerFooter } from "../components/ViewerNavigation";
-import { Container } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import ViewerMain from "../components/ViewerMain";
+import {
+  ViewerHeader,
+  ViewerFooter,
+} from "../components/Viewer/ViewerNavigation";
+import { Container, useColorModeValue } from "@chakra-ui/react";
+import { useEffect, useState, useCallback } from "react";
+import ViewerImageList from "../components/Viewer/ViewerImageList";
 
-export const ViewerLayout = ({ children }) => {
+export const Viewer = ({ children, episode, images }) => {
   const [isVisible, setIsVisible] = useState(true);
-  function scrollHandler() {
+  const scrollHandler = useCallback(() => {
     let scrollHeight = Math.max(
       document.documentElement.scrollHeight,
       document.body.scrollHeight
@@ -19,7 +22,7 @@ export const ViewerLayout = ({ children }) => {
     if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
       setIsVisible(true);
     else setIsVisible(false);
-  }
+  });
   useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
   }, []);
@@ -32,10 +35,10 @@ export const ViewerLayout = ({ children }) => {
         flex={"1 0 auto"}
         py={4}
         px={0}
-        marginY={14}
+        marginY={10}
       >
         <Container maxW={"7xl"}>{children}</Container>
-        <ViewerMain></ViewerMain>
+        {images && <ViewerImageList images={images}></ViewerImageList>}
       </Container>
       <ViewerFooter isVisible={isVisible} />
     </>

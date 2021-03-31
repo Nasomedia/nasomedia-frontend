@@ -1,4 +1,5 @@
 export const PRODUCTION_URL = 'https://nasomedia.com';
+export const BASE_URL = "https://naso-media-backend.herokuapp.com/api/v1"
 
 /**
  * SEO constants
