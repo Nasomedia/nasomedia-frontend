@@ -5,14 +5,10 @@ import { readEpisode, readEpisodeImages } from "../../src/utils/api";
 import { useEffect } from "react";
 
 const EpisodeView = ({ episode, images }) => {
-  useEffect(() => {
-    console.log(episode);
-    console.log(images);
-  });
   return (
     <>
       <Head>
-        <title></title>
+        <title>{episode.title}</title>
       </Head>
       <Viewer episode={episode} images={images}></Viewer>
     </>
