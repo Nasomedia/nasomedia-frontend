@@ -5,7 +5,6 @@ import { Container, Flex, Image } from "@chakra-ui/react";
 import React from "react";
 
 const ViewerImageList = ({ images }) => {
-  console.log(images);
   const imageList = images
     ? images.map((image) => (
         <Image key={`${image.id}`} src={image.url} fallbackSrc="/noimage.png" />
