@@ -98,8 +98,8 @@ const MobileDrawerLinks = ({ isUser }) => {
 };
 
 export const MobileDrawerNavigation = (props) => {
+  // const user = { nickname: "Naso" };
   const user = null;
-  // const user = null;
   const router = useRouter();
   return (
     <DrawerContent>
