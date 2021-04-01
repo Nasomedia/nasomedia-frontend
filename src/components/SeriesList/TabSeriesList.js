@@ -38,8 +38,21 @@ const TabSeriesListTabs = ({ index }) => {
 const ListBox = ({ imageURL, title }) => {
   return (
     <Box width={"9rem"} height={"2xs"}>
-      <Image width={"8.5rem"} objectFit="cover" h={"11rem"} borderRadius="lg" src={imageURL} />
-      <Text width={"8.5rem"} maxHeight={"2.25rem"} height={"auto"} mt="1" lineHeight="tight">
+      <Image
+        width={"8.5rem"}
+        objectFit="cover"
+        h={"11rem"}
+        borderRadius="lg"
+        src={imageURL}
+        alt={`thumbnail_image-${title}`}
+      />
+      <Text
+        width={"8.5rem"}
+        maxHeight={"2.25rem"}
+        height={"auto"}
+        mt="1"
+        lineHeight="tight"
+      >
         {title}
       </Text>
     </Box>
