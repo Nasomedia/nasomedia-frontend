@@ -6,13 +6,13 @@ import {
   Heading,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Head } from "next/head";
 import { useRouter } from "next/router";
+import Head from "next/head"
 
 export default function Login() {
   const router = useRouter();
   return (
-    <>
+    <div>
       <Head>
         <title>로그인</title>
       </Head>
@@ -84,6 +84,6 @@ export default function Login() {
           </VStack>
         </Box>
       </Box>
-    </>
+    </div>
   );
 }
