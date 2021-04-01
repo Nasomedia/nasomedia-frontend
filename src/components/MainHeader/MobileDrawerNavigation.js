@@ -86,7 +86,9 @@ const AppInstallButton = ({ children }) => {
 
   const installApp = async () => {
     if (!installPrompt) {
-      alert("설치되어 있습니다.");
+      alert(
+        "설치가 불가능합니다.\n(이미 설치되어 있거나, 브라우저가 지원하지 않습니다.)"
+      );
       return false;
     }
 
