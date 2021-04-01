@@ -16,11 +16,13 @@ import {
 import { IoMoon, IoSunny } from "react-icons/io5";
 import NextLink from "next/link";
 import MotionFlex from "../../motion/MotionFlex";
+import { useRouter } from "next/router";
 
-export const ViewerFooter = ({ isVisible }) => {
+export const ViewerFooter = ({ isVisible, nextEpisode, prevEpisode }) => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const beforeEpisodeID = null;
-  const nextEpisodeID = null;
+  const nextEpisodeID = nextEpisode ? nextEpisode.id : null;
+  const prevEpisodeID = prevEpisode ? prevEpisode.id : null;
+  const router = useRouter();
   return (
     <Box>
       <MotionFlex
@@ -53,14 +55,20 @@ export const ViewerFooter = ({ isVisible }) => {
                 >
                   <IconButton
                     variant="outline"
-                    colorScheme={beforeEpisodeID ? "purple" : "gray"}
+                    onClick={() => {
+                      router.push(`/episode/${prevEpisodeID}`);
+                    }}
+                    colorScheme={prevEpisodeID ? "purple" : "gray"}
                     borderRadius={"full"}
-                    aria-label="Before"
+                    aria-label="Previous"
                     icon={<ChevronLeftIcon />}
-                    isDisabled={beforeEpisodeID ? false : true}
+                    isDisabled={prevEpisodeID ? false : true}
                   />
                   <IconButton
                     variant="outline"
+                    onClick={() => {
+                      router.push(`/episode/${nextEpisodeID}`);
+                    }}
                     colorScheme={nextEpisodeID ? "purple" : "gray"}
                     borderRadius={"full"}
                     aria-label="Next"

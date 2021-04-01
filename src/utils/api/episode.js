@@ -15,6 +15,30 @@ export async function readEpisode(id) {
   }
 }
 
+export async function readPrevEpisode(id) {
+  try {
+    const res = await fetcher(`${getURL(id)}/prev`);
+    if (typeof res.id === "number") {
+      return res;
+    }
+    return null;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export async function readNextEpisode(id) {
+  try {
+    const res = await fetcher(`${getURL(id)}/next`);
+    if (typeof res.id === "number") {
+      return res;
+    }
+    return null;
+  } catch (e) {
+    throw e;
+  }
+}
+
 export async function readEpisodeImages(id) {
   try {
     const res = await fetcher(`${getURL(id)}/images`);

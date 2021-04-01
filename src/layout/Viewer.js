@@ -7,7 +7,13 @@ import { Container, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
 import ViewerImageList from "../components/Viewer/ViewerImageList";
 
-export const Viewer = ({ children, episode, images }) => {
+export const Viewer = ({
+  children,
+  episode,
+  images,
+  nextEpisode,
+  prevEpisode,
+}) => {
   const [isVisible, setIsVisible] = useState(true);
   const scrollHandler = useCallback(() => {
     let scrollHeight = Math.max(
@@ -40,7 +46,11 @@ export const Viewer = ({ children, episode, images }) => {
         <Container maxW={"7xl"}>{children}</Container>
         {images && <ViewerImageList images={images}></ViewerImageList>}
       </Container>
-      <ViewerFooter isVisible={isVisible} />
+      <ViewerFooter
+        isVisible={isVisible}
+        nextEpisode={nextEpisode}
+        prevEpisode={prevEpisode}
+      />
     </>
   );
 };

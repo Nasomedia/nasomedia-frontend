@@ -11,73 +11,78 @@ import { useRouter } from "next/router";
 export default function Login() {
   const router = useRouter();
   return (
-    <Box
-      width={"full"}
-      height={"100vh"}
-      bgGradient={useColorModeValue(
-        "rgba(240, 240, 240, 0.8)",
-        "rgba(26, 32, 44, 0.8)"
-      )}
-      d="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <>
+      <Head>
+        <title>로그인</title>
+      </Head>
       <Box
-        boxShadow={"base"}
-        maxW={"2xl"}
-        borderWidth="1px"
-        mx={2}
-        minW={"60px"}
-        w={"sm"}
-        borderRadius="lg"
+        width={"full"}
+        height={"100vh"}
+        bgGradient={useColorModeValue(
+          "rgba(240, 240, 240, 0.8)",
+          "rgba(26, 32, 44, 0.8)"
+        )}
+        d="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        <VStack
-          zIndex="999"
-          padding={4}
-          direction={"column"}
-          h={"100%"}
-          minH={"sm"}
-          justify={"center"}
-          alignItems={"center"}
-          spacing={5}
-          css={{
-            backgroundColor: useColorModeValue(
-              "rgba(255, 255, 255, 0.8)",
-              "rgba(36, 42, 54, 0.8)"
-            ),
-          }}
+        <Box
+          boxShadow={"base"}
+          maxW={"2xl"}
+          borderWidth="1px"
+          mx={2}
+          minW={"60px"}
+          w={"sm"}
+          borderRadius="lg"
         >
-          <Heading>나소미디어</Heading>
-          <Heading
+          <VStack
+            zIndex="999"
+            padding={4}
+            direction={"column"}
+            h={"100%"}
+            minH={"sm"}
+            justify={"center"}
+            alignItems={"center"}
+            spacing={5}
             css={{
-              opacity: "100%",
+              backgroundColor: useColorModeValue(
+                "rgba(255, 255, 255, 0.8)",
+                "rgba(36, 42, 54, 0.8)"
+              ),
             }}
-            fontSize="md"
           >
-            현재 로그인을 지원하고 있지 않습니다.
-          </Heading>
-          <ButtonGroup>
-            <Button
-              onClick={() => {
-                router.push("/");
+            <Heading>나소미디어</Heading>
+            <Heading
+              css={{
+                opacity: "100%",
               }}
-              colorScheme="purple"
-              fontWeight={"medium"}
+              fontSize="md"
             >
-              홈
-            </Button>
-            <Button
-              onClick={() => {
-                router.back();
-              }}
-              colorScheme="purple"
-              fontWeight={"medium"}
-            >
-              뒤로가기
-            </Button>
-          </ButtonGroup>
-        </VStack>
+              현재 로그인을 지원하고 있지 않습니다.
+            </Heading>
+            <ButtonGroup>
+              <Button
+                onClick={() => {
+                  router.push("/");
+                }}
+                colorScheme="purple"
+                fontWeight={"medium"}
+              >
+                홈
+              </Button>
+              <Button
+                onClick={() => {
+                  router.back();
+                }}
+                colorScheme="purple"
+                fontWeight={"medium"}
+              >
+                뒤로가기
+              </Button>
+            </ButtonGroup>
+          </VStack>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
