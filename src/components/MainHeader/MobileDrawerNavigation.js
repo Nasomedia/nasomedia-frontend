@@ -62,6 +62,7 @@ const DrawerPublicLinks = ({ asPath }) => {
   );
 };
 
+/*
 const AppInstallButton = ({ children }) => {
   const activeBg = useColorModeValue("purple.50", "purple.900");
   let installPrompt = null;
@@ -132,6 +133,7 @@ const AppInstallButton = ({ children }) => {
     </Button>
   );
 };
+*/
 
 const MobileDrawerLinks = ({ isUser }) => {
   const { asPath } = useRouter();
@@ -159,13 +161,13 @@ const MobileDrawerLinks = ({ isUser }) => {
               로그아웃
             </NavigationLink>
             <Divider />
-            <AppInstallButton>앱 설치하기</AppInstallButton>
+            {/* <AppInstallButton>앱 설치하기</AppInstallButton> */}
           </Stack>
         ) : (
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
             <Divider />
-            <AppInstallButton>앱 설치하기</AppInstallButton>
+            {/* <AppInstallButton>앱 설치하기</AppInstallButton> */}
           </Stack>
         )}
       </Stack>
