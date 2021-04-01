@@ -1,4 +1,6 @@
+import { ColorModeScript } from "@chakra-ui/color-mode";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import theme from "../src/components/theme";
 
 class NasoDocument extends Document {
   static async getInitialProps(ctx) {
@@ -11,6 +13,7 @@ class NasoDocument extends Document {
       <Html lang="ko-KR">
         <Head />
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>
