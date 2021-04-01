@@ -12,6 +12,7 @@ import {
   Button,
   Divider,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 const NavigationLink = ({ href, children, asPath }) => {
   const isActive = asPath === href;
@@ -61,6 +62,74 @@ const DrawerPublicLinks = ({ asPath }) => {
   );
 };
 
+const AppInstallButton = () => {
+  let installPrompt = null;
+
+  useEffect(() => {
+    console.log("Listening for Install prompt");
+    window.addEventListener("beforeinstallprompt", (e) => {
+      // For older browsers
+      e.preventDefault();
+      console.log("Install Prompt fired");
+      installPrompt = e;
+      // See if the app is already installed, in that case, do nothing
+      if (
+        (window.matchMedia &&
+          window.matchMedia("(display-mode: standalone)").matches) ||
+        window.navigator.standalone === true
+      ) {
+        return false;
+      }
+    });
+  }, []);
+
+  const installApp = async () => {
+    if (!installPrompt) {
+      alert("설치되어 있습니다.");
+      return false;
+    }
+
+    installPrompt.prompt();
+
+    let outcome = await installPrompt.userChoice;
+
+    if (outcome.outcome == "accepted") {
+      console.log("App Installed");
+    } else {
+      console.log("App not installed");
+    }
+    // Remove the event reference
+    installPrompt = null;
+  };
+
+  return (
+    <Button
+      fontSize={"sm"}
+      rounded={"md"}
+      px={3}
+      py={2}
+      ml={"-12px!important"}
+      bg={!installPrompt ? activeBg : undefined}
+      fontWeight={installPrompt ? 400 : 600}
+      color={
+        installPrompt
+          ? useColorModeValue("purple.700", "purple.400")
+          : useColorModeValue("gray.700", "gray.400")
+      }
+      _hover={{
+        bg: !installPrompt
+          ? activeBg
+          : useColorModeValue("gray.100", "gray.900"),
+      }}
+      onClick={() => {
+        installApp();
+      }}
+    >
+      {children}
+    </Button>
+  );
+};
+
 const MobileDrawerLinks = ({ isUser }) => {
   const { asPath } = useRouter();
   return (
@@ -86,10 +155,14 @@ const MobileDrawerLinks = ({ isUser }) => {
             <NavigationLink asPath={asPath} href={`/logout`}>
               로그아웃
             </NavigationLink>
+            <Divider />
+            <AppInstallButton>앱 설치하기</AppInstallButton>
           </Stack>
         ) : (
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
+            <Divider />
+            <AppInstallButton>앱 설치하기</AppInstallButton>
           </Stack>
         )}
       </Stack>
@@ -101,6 +174,7 @@ export const MobileDrawerNavigation = (props) => {
   // const user = { nickname: "Naso" };
   const user = null;
   const router = useRouter();
+
   return (
     <DrawerContent>
       <DrawerHeader>
