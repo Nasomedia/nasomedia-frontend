@@ -34,7 +34,7 @@ const styles = {
       pointerEvents: "none",
     },
     "#nprogress .bar": {
-      background: "purple.400",
+      background: "purple.100",
       position: "fixed",
       zIndex: "99999",
       top: 0,
