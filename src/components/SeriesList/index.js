@@ -1,1 +1,1 @@
-export { TabSeriesList as TabSeriesList } from "./TabSeriesList";
+export * from "./TabSeriesList";
