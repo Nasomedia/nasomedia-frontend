@@ -46,5 +46,24 @@
         "src": "icons/icon-512x512.png",
         "sizes": "512x512",
         "type": "image/png"
-      }]
+      },
+      {
+        "src": "icons/maskable_icon.png",
+        "sizes": "1024x1024",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "icons/maskable_icon_x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "icons/maskable_icon_x128.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ]
   }

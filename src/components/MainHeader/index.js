@@ -74,7 +74,7 @@ export const MainHeader = () => {
                 spacing={{ base: 2, sm: 4 }}
               >
                 <Img
-                  src="/icons/nasoicon.png"
+                  src="/icons/nasoicon.svg"
                   alt="logo"
                   w={{ base: 8 }}
                   h={{ base: 8 }}
