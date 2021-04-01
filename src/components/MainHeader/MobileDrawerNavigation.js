@@ -110,15 +110,15 @@ const AppInstallButton = ({ children }) => {
       px={3}
       py={2}
       ml={"-12px!important"}
-      bg={!installPrompt ? activeBg : undefined}
-      fontWeight={!installPrompt ? 400 : 600}
+      bg={installPrompt ? activeBg : undefined}
+      fontWeight={installPrompt ? 400 : 600}
       color={
-        !installPrompt
+        installPrompt
           ? useColorModeValue("purple.700", "purple.400")
           : useColorModeValue("gray.700", "gray.400")
       }
       _hover={{
-        bg: !installPrompt
+        bg: installPrompt
           ? activeBg
           : useColorModeValue("gray.100", "gray.900"),
       }}
