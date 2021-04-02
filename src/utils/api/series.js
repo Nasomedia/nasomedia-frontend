@@ -29,3 +29,16 @@ export async function readSeriesesByUpdate(skip, limit) {
     throw e;
   }
 }
+
+export async function readEpisodesBySeries(id) {
+  try {
+    const res = await fetcher(`${getURL()}/${id}/episodes`);
+    if (Array.isArray(res)) {
+      return res;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    throw e;
+  }
+}

@@ -95,31 +95,27 @@ export const ViewerHeader = ({ isVisible }) => {
               </NextLink>
             </Flex> */}
 
-          {/* <Stack
-              direction={"row"}
-              align={"center"}
-              spacing={8}
-              flex={{ base: 1, md: "auto" }}
-              justify={"flex-end"}
-            >
-              <DesktopNavRight
-                user={null}
-                display={{ base: "none", md: "flex" }}
-              />
-              <IconButton
-                size={"sm"}
-                variant={"ghost"}
-                aria-label={"Toggle Color Mode"}
-                onClick={toggleColorMode}
-                icon={
-                  colorMode == "light" ? (
-                    <IoMoon size={18} />
-                  ) : (
-                    <IoSunny size={18} />
-                  )
-                }
-              />
-            </Stack> */}
+          <Stack
+            direction={"row"}
+            align={"center"}
+            spacing={8}
+            flex={{ base: 1, md: "auto" }}
+            justify={"flex-end"}
+          >
+            <IconButton
+              size={"sm"}
+              variant={"ghost"}
+              aria-label={"Toggle Color Mode"}
+              onClick={toggleColorMode}
+              icon={
+                colorMode == "light" ? (
+                  <IoMoon size={18} />
+                ) : (
+                  <IoSunny size={18} />
+                )
+              }
+            />
+          </Stack>
         </Container>
       </MotionFlex>
       {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}

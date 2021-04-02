@@ -11,9 +11,13 @@ import {
   useBreakpointValue,
   Text,
   HStack,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import NextLink from "next/link";
 import { useState } from "react";
+import { TabListImageSkeleton } from "../ImageSkeleton";
 
 const TabSeriesListTabs = ({ index }) => {
   const hrefs = ["update", "ranking", "ranking?type=new"];
@@ -35,26 +39,31 @@ const TabSeriesListTabs = ({ index }) => {
   );
 };
 
-const ListBox = ({ imageURL, title }) => {
+const ListBox = ({ imageURL, title, id }) => {
   return (
     <Box width={"9rem"} height={"2xs"}>
-      <Image
-        width={"8.5rem"}
-        objectFit="cover"
-        h={"11rem"}
-        borderRadius="lg"
-        src={imageURL}
-        alt={`thumbnail_image-${title}`}
-      />
-      <Text
-        width={"8.5rem"}
-        maxHeight={"2.25rem"}
-        height={"auto"}
-        mt="1"
-        lineHeight="tight"
-      >
-        {title}
-      </Text>
+      <LinkBox>
+        <Image
+          width={"8.5rem"}
+          h={"11rem"}
+          objectFit="cover"
+          fallback={TabListImageSkeleton}
+          borderRadius="lg"
+          src={imageURL}
+          alt={`thumbnail_image-${title}`}
+        />
+        <NextLink href={`/series/${id}`} passHref>
+          <LinkOverlay
+            width={"8.5rem"}
+            maxHeight={"2.25rem"}
+            height={"auto"}
+            mt="1"
+            lineHeight="tight"
+          >
+            {title}
+          </LinkOverlay>
+        </NextLink>
+      </LinkBox>
     </Box>
   );
 };
@@ -77,6 +86,7 @@ const UpdateList = ({ updates }) => {
             key={`${updateItem.id}`}
             imageURL={updateItem.thumbnail}
             title={updateItem.title}
+            id={`${updateItem.id}`}
           />
         ))}
     </HStack>

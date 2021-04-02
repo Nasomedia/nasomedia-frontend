@@ -6,11 +6,11 @@ export const DesktopNavRight = (props) => {
   const user = null;
   return (
     <Stack direction={"row"} spacing={4} {...props}>
-      <DesktopNavButton href={"search"}>
+      <DesktopNavButton href={"/search"}>
         <Search2Icon />
       </DesktopNavButton>
       {user ? null : (
-        <DesktopNavButton href="login">로그인/가입</DesktopNavButton>
+        <DesktopNavButton href="/login">로그인/가입</DesktopNavButton>
       )}
     </Stack>
   );

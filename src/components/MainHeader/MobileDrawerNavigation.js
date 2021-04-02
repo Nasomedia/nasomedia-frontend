@@ -135,7 +135,7 @@ const AppInstallButton = ({ children }) => {
 };
 */
 
-const MobileDrawerLinks = ({ isUser }) => {
+const MobileDrawerLinks = ({ user }) => {
   const { asPath } = useRouter();
   return (
     <Stack
@@ -147,7 +147,7 @@ const MobileDrawerLinks = ({ isUser }) => {
       // {...props}
     >
       <Stack>
-        {isUser ? (
+        {user ? (
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
             <Divider />
@@ -211,7 +211,7 @@ export const MobileDrawerNavigation = (props) => {
         </Stack>
       </DrawerHeader>
       <DrawerBody>
-        <MobileDrawerLinks isUser={user} />
+        <MobileDrawerLinks user={user} />
       </DrawerBody>
     </DrawerContent>
   );
