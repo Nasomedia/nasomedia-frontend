@@ -11,7 +11,10 @@ const SeriesDetail = ({ series, episodes }) => {
       <Head>
         <title>{series.title}</title>
       </Head>
-      <Stack direction={{ base: "column", md: "row" }}>
+      <Stack
+        direction={{ base: "column", md: "row" }}
+        alignItems={{ base: "center", md: "unset" }}
+      >
         <SeriesDetailHeader series={series} />
         <SeriesDetailEpisodeList episodes={episodes} />
       </Stack>
