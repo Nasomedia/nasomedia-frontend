@@ -5,6 +5,7 @@ import {
   useColorModeValue,
   LinkBox,
   LinkOverlay,
+  Divider,
 } from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
@@ -17,7 +18,7 @@ const EpisodeListBox = ({ episode }) => {
       as={Flex}
       bg={useColorModeValue(
         "rgba(250, 250, 250, 0.8)",
-        "rgba(26, 32, 44, 0.8)"
+        "rgba(46, 52, 64, 0.8)"
       )}
       w={"full"}
       flexDirection={"row"}
@@ -54,7 +55,8 @@ const EpisodeListBox = ({ episode }) => {
 
 const SeriesDetailEpisodeList = ({ episodes }) => {
   return (
-    <VStack m={8} p={4} w={"full"}>
+    <VStack spacing={4} m={2} px={{ base: 0, md: 8 }} w={"full"}>
+      <Divider my={2} />
       {episodes &&
         episodes.map((episode) => (
           <EpisodeListBox key={episode.id} episode={episode} />

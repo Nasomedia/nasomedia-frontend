@@ -13,8 +13,8 @@ import { SeriesDetailThumbnailSkeleton } from "../ImageSkeleton";
 const SeriesDetailHeader = ({ series }) => {
   return (
     <Box
-      width={{ base: "full", md: "sm" }}
-      minW={{ base: "full", md: "xs" }}
+      width={{ base: "full", sm: "sm" }}
+      minW={{ base: "full", sm: "xs" }}
       p={2}
     >
       <Image

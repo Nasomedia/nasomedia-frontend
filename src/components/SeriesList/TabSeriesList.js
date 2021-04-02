@@ -41,30 +41,29 @@ const TabSeriesListTabs = ({ index }) => {
 
 const ListBox = ({ imageURL, title, id }) => {
   return (
-    <Box width={"9rem"} height={"2xs"}>
-      <LinkBox>
-        <Image
-          width={"8.5rem"}
-          h={"11rem"}
-          objectFit="cover"
-          fallback={TabListImageSkeleton}
-          borderRadius="lg"
-          src={imageURL}
-          alt={`thumbnail_image-${title}`}
-        />
-        <NextLink href={`/series/${id}`} passHref>
-          <LinkOverlay
-            width={"8.5rem"}
-            maxHeight={"2.25rem"}
-            height={"auto"}
-            mt="1"
-            lineHeight="tight"
-          >
-            {title}
-          </LinkOverlay>
-        </NextLink>
-      </LinkBox>
-    </Box>
+    <LinkBox as={"article"} width={"9rem"} height={"2xs"}>
+      <Image
+        width={"8.5rem"}
+        h={"11rem"}
+        objectFit="cover"
+        fallback={TabListImageSkeleton}
+        borderRadius="lg"
+        src={imageURL}
+        alt={`thumbnail_image-${title}`}
+      />
+      <NextLink href={`/series/${id}`} passHref>
+        <LinkOverlay
+          as={Text}
+          width={"8.25rem"}
+          maxHeight={"2.5rem"}
+          mt={"1"}
+          pl={"0.5"}
+          lineHeight={"short"}
+        >
+          {title}
+        </LinkOverlay>
+      </NextLink>
+    </LinkBox>
   );
 };
 
