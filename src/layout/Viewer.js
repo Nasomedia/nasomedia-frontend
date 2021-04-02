@@ -34,7 +34,7 @@ export const Viewer = ({
   }, []);
   return (
     <>
-      <ViewerHeader isVisible={isVisible} />
+      <ViewerHeader isVisible={isVisible} episode={episode} />
       <Container
         onClick={() => setIsVisible(!isVisible)}
         maxW={"7xl"}

@@ -9,13 +9,15 @@ import {
   Heading,
   Img,
 } from "@chakra-ui/react";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { IoMoon, IoSunny } from "react-icons/io5";
+import { ArrowLeftIcon } from "@chakra-ui/icons";
+import { IoHome, IoMoon, IoSunny } from "react-icons/io5";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import MotionFlex from "../../motion/MotionFlex";
 
-export const ViewerHeader = ({ isVisible }) => {
+export const ViewerHeader = ({ isVisible, episode }) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const router = useRouter();
   return (
     <Box>
       <MotionFlex
@@ -37,71 +39,34 @@ export const ViewerHeader = ({ isVisible }) => {
           ),
         }}
       >
-        <Container as={Flex} maxW={"7xl"} align={"center"}>
-          {/* <Flex
-              flex={{ base: 1, md: "auto" }}
-              ml={{ base: -2 }}
-              display={{ base: "flex", md: "none" }}
-            >
-              <IconButton
-                onClick={onMobileNavToggle}
-                icon={
-                  isMobileNavOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={5} h={5} />
-                  )
-                }
-                variant={"ghost"}
-                size={"sm"}
-                aria-label={"Toggle Navigation"}
-              />
-            </Flex>
-  
-            <Flex
-              flex={{ base: 1, md: "auto" }}
-              justify={{ base: "center", md: "start" }}
-            >
-              <NextLink href={"/"} passHref>
-                <Stack
-                  as={"a"}
-                  direction={"row"}
-                  alignItems={"center"}
-                  spacing={{ base: 2, sm: 4 }}
-                >
-                  <Img
-                    src="/icons/nasoicon.png"
-                    alt="logo"
-                    w={{ base: 8 }}
-                    h={{ base: 8 }}
-                  />
-                  <Heading
-                    as={"h1"}
-                    fontSize={"xl"}
-                    display={{ base: "none", md: "block" }}
-                  >
-                    나소미디어
-                  </Heading>
-                  <Stack
-                    direction={"row"}
-                    align={"center"}
-                    spacing={8}
-                    flex={{ base: 1, md: "auto" }}
-                    justify={"flex-end"}
-                  >
-                    <DesktopNavLeft display={{ base: "none", md: "flex" }} />
-                  </Stack>
-                </Stack>
-              </NextLink>
-            </Flex> */}
+        <Container as={Flex} maxW={"7xl"} alignItems={"center"}>
+          <Flex flex={1} alignItems={"center"}>
+            <IconButton
+              onClick={() => router.push(`/series/${episode.series_id}`)}
+              icon={<ArrowLeftIcon w={3} h={3} />}
+              variant={"ghost"}
+              size={"sm"}
+              aria-label={"Go Series"}
+            />
+            <Heading mx={2} as={"h1"} fontSize={"md"}>
+              {episode.title}
+            </Heading>
+          </Flex>
 
           <Stack
             direction={"row"}
             align={"center"}
-            spacing={8}
+            spacing={4}
             flex={{ base: 1, md: "auto" }}
             justify={"flex-end"}
           >
+            <IconButton
+              size={"sm"}
+              variant={"ghost"}
+              aria-label={"Go Home"}
+              onClick={() => router.push("/")}
+              icon={<IoHome size={18} />}
+            />
             <IconButton
               size={"sm"}
               variant={"ghost"}

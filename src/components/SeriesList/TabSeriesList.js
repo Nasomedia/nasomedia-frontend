@@ -41,29 +41,35 @@ const TabSeriesListTabs = ({ index }) => {
 
 const ListBox = ({ imageURL, title, id }) => {
   return (
-    <LinkBox as={"article"} width={"9rem"} height={"2xs"}>
-      <Image
-        width={"8.5rem"}
-        h={"11rem"}
-        objectFit="cover"
-        fallback={TabListImageSkeleton}
-        borderRadius="lg"
-        src={imageURL}
-        alt={`thumbnail_image-${title}`}
-      />
-      <NextLink href={`/series/${id}`} passHref>
-        <LinkOverlay
-          as={Text}
-          width={"8.25rem"}
-          maxHeight={"2.5rem"}
+    <NextLink href={`/series/${id}`} passHref>
+      <Box as={"a"} width={"9rem"} height={"56"}>
+        <Image
+          width={"8.5rem"}
+          h={"11rem"}
+          objectFit="cover"
+          fallback={TabListImageSkeleton}
+          borderRadius="lg"
+          src={imageURL}
+          alt={`thumbnail_image-${title}`}
+        />
+        <Text
+          width={"8.375rem"}
+          h={"2.4rem"}
+          lineHeight={"1.2rem"}
           mt={"1"}
-          pl={"0.5"}
+          pl={"0.05rem"}
+          textOverflow={"ellipsis"}
           lineHeight={"short"}
+          sx={{
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            display: "-webkit-box",
+          }}
         >
           {title}
-        </LinkOverlay>
-      </NextLink>
-    </LinkBox>
+        </Text>
+      </Box>
+    </NextLink>
   );
 };
 
@@ -119,6 +125,7 @@ export const TabSeriesList = (props) => {
         isFitted={isLargerThan440}
         onChange={(index) => setTabIndex(index)}
         size="sm"
+        colorScheme={"purple"}
       >
         <TabSeriesListTabs index={tabIndex} />
         <TabSeriesListTabPanels updates={updates} />
