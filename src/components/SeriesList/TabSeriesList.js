@@ -47,7 +47,7 @@ const ListBox = ({ imageURL, title, id }) => {
           width={"8.5rem"}
           h={"11rem"}
           objectFit="cover"
-          fallback={TabListImageSkeleton}
+          fallback={<TabListImageSkeleton />}
           borderRadius="lg"
           src={imageURL}
           alt={`thumbnail_image-${title}`}

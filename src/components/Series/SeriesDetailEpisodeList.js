@@ -27,7 +27,7 @@ const EpisodeListBox = ({ episode }) => {
         w={"28"}
         h={"32"}
         objectFit={"cover"}
-        fallback={DetailEpisodeThumbnailSkeleton}
+        fallback={<DetailEpisodeThumbnailSkeleton />}
         borderLeftRadius={"md"}
         src={episode.thumbnail}
         alt={`thumbnail_image-${episode.title}`}

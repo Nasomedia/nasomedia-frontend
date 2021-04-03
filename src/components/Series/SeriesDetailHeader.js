@@ -19,7 +19,7 @@ const SeriesDetailHeader = ({ series }) => {
     >
       <Image
         src={series.thumbnail}
-        fallback={SeriesDetailThumbnailSkeleton}
+        fallback={<SeriesDetailThumbnailSkeleton />}
         width={"full"}
         height={"auto"}
         objectFit="cover"
