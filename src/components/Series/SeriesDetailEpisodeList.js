@@ -1,18 +1,26 @@
-import { VStack, Box, Flex } from "@chakra-ui/layout";
 import {
+  VStack,
+  Box,
+  Flex,
   Image,
   Text,
   useColorModeValue,
   LinkBox,
   LinkOverlay,
   Divider,
+  Badge,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { DetailEpisodeThumbnailSkeleton } from "../ImageSkeleton";
 
 const EpisodeListBox = ({ episode }) => {
   const updateAt = new Date(episode.update_at);
+  const [isNew, setIsNew] = useState(null);
+  useEffect(() => {
+    const newTime = new Date().getTime() - 86400000 * 3;
+    setIsNew(updateAt.getTime() > newTime ? true : false);
+  }, [updateAt, isNew]);
   return (
     <LinkBox
       as={Flex}
@@ -32,22 +40,27 @@ const EpisodeListBox = ({ episode }) => {
         src={episode.thumbnail}
         alt={`thumbnail_image-${episode.title}`}
       />
-      <Flex
-        m={4}
-        borderRightRadius={"md"}
-        justifyContent={"center"}
-        flexDirection={"column"}
-      >
-        <NextLink href={`/episode/${episode.id}`} passHref>
-          <LinkOverlay>{episode.title}</LinkOverlay>
-        </NextLink>
-        <Text
-          fontSize={"small"}
-          fontWeight={"light"}
-          color={useColorModeValue("gray.500", "gray.200")}
+      <Flex alignItems={"center"}>
+        <Flex
+          m={4}
+          borderRightRadius={"md"}
+          justifyContent={"center"}
+          flexDirection={"column"}
         >
-          {`${updateAt.getFullYear()}.${updateAt.getMonth()}.${updateAt.getDay()}`}
-        </Text>
+          <NextLink href={`/episode/${episode.id}`} passHref>
+            <LinkOverlay>{episode.title}</LinkOverlay>
+          </NextLink>
+          <Text
+            fontSize={"small"}
+            fontWeight={"light"}
+            color={useColorModeValue("gray.500", "gray.200")}
+          >
+            {updateAt
+              ? `${updateAt.getFullYear()}.${updateAt.getMonth() + 1}.${updateAt.getDate()}`
+              : "-"}
+          </Text>
+        </Flex>
+        {isNew ? <Badge colorScheme={"green"}>New</Badge> : null}
       </Flex>
     </LinkBox>
   );

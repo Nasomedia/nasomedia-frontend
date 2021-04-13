@@ -43,7 +43,6 @@ export const Viewer = ({
         px={0}
         marginY={10}
       >
-        <Container maxW={"7xl"}>{children}</Container>
         {images && <ViewerImageList images={images}></ViewerImageList>}
       </Container>
       <ViewerFooter
