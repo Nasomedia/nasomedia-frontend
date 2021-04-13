@@ -10,12 +10,19 @@ import {
 } from "../../src/utils/api";
 import { useEffect } from "react";
 
-const EpisodeView = ({ episode, images, nextEpisode, prevEpisode, ldJSON }) => {
+const EpisodeView = ({
+  episode,
+  images,
+  nextEpisode,
+  prevEpisode,
+  ldJSON,
+  series,
+}) => {
   return (
     <>
       <Head>
         <title>
-          {series} - {episode.title}
+          {series.title} - {episode.title}
         </title>
         <script
           type="application/ld+json"
@@ -65,15 +72,16 @@ export async function getServerSideProps(context) {
     },
     description: `${series.description}`,
   };
+  return {
+    props: {
+      episode: episode,
+      images: images,
+      nextEpisode: nextEpisode,
+      prevEpisode: prevEpisode,
+      ldJSON: ldJSON,
+      series: series,
+    }, // will be passed to the page component as props
+  };
 }
-return {
-  props: {
-    episode: episode,
-    images: images,
-    nextEpisode: nextEpisode,
-    prevEpisode: prevEpisode,
-    ldJSON: ldJSON,
-  }, // will be passed to the page component as props
-};
 
 export default EpisodeView;
