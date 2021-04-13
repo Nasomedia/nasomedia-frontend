@@ -8,7 +8,7 @@ import {
   readPrevEpisode,
   readSeries,
 } from "../../src/utils/api";
-import { useEffect } from "react";
+import { PRODUCTION_URL, ICON_URL } from "../../src/constants"
 
 const EpisodeView = ({
   episode,
@@ -52,8 +52,7 @@ export async function getServerSideProps(context) {
       "@type": "Article",
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": `https://dev.nasomedia.com/episode/${episode.id}`,
-        // "@id": `${BASE_URL}/episode/${episode.id}`,
+        "@id": `${PRODUCTION_URL}/episode/${episode.id}`,
       },
       headline: `${series.title} ${episode.title}`,
       image: [`${episode.thumbnail}`],
@@ -69,8 +68,7 @@ export async function getServerSideProps(context) {
         name: "나소미디어",
         logo: {
           "@type": "ImageObject",
-          url: "https://dev.nasomedia.com/icons/nasoicon.png",
-          // "@id": `${BASE_URL}/${SEO_OG_IMAGE}`,
+          url: `${PRODUCTION_URL}/${ICON_URL}`,
         },
       },
       description: `${series.description}`,
@@ -83,8 +81,7 @@ export async function getServerSideProps(context) {
           "@type": "ListItem",
           position: 1,
           name: series.title,
-          item: `https://dev.nasomedia.com/series/${series.id}`,
-          // "@id": `${BASE_URL}/series/${series.id}`,
+          item: `${PRODUCTION_URL}/series/${series.id}`,
         },
         {
           "@type": "ListItem",
