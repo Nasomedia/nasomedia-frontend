@@ -8,7 +8,7 @@ import {
   readPrevEpisode,
   readSeries,
 } from "../../src/utils/api";
-import { PRODUCTION_URL, ICON_URL } from "../../src/constants"
+import { PRODUCTION_URL, ICON_URL } from "../../src/constants";
 
 const EpisodeView = ({
   episode,
@@ -61,7 +61,7 @@ export async function getServerSideProps(context) {
       dateModified: `${episode.update_at}`,
       author: {
         "@type": "Person",
-        name: "나소미디어",
+        name: "-",
       },
       publisher: {
         "@type": "Organization",
@@ -72,6 +72,12 @@ export async function getServerSideProps(context) {
         },
       },
       description: `${series.description}`,
+      // isAccessibleForFree: "False",
+      // hasPart: {
+      //   "@type": "WebPageElement",
+      //   isAccessibleForFree: "False",
+      //   cssSelector: ".paywall",
+      // },
     },
     {
       "@context": "https://schema.org",
