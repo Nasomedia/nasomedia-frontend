@@ -10,4 +10,5 @@ export const BASE_URL = "https://naso-media-backend.herokuapp.com/api/v1"
  export const SEO_KEYWORDS =
    '나소미디어';
  export const SEO_OG_IMAGE = '/icons/nasoicon.png';
+ export const ICON_URL = '/icons/nasoicon.png';
  export const SEO_TWITTER_IMAGE = '/icons/nasoicon.png';
