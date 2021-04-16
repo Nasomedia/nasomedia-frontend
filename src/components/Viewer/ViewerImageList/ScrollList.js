@@ -19,7 +19,13 @@ export const ViewerScrollImageList = ({ images }) => {
       ))
     : null;
   return (
-    <Container w={"2xl"} padding={0} py={4} px={0} marginY={10}>
+    <Container
+      w={"2xl"}
+      padding={0}
+      //  py={4}
+      // px={0}
+      //  marginY={10}
+    >
       <Flex flexDirection={"column"}>{imageList}</Flex>
     </Container>
   );

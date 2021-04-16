@@ -5,21 +5,12 @@ import {
   Stack,
   IconButton,
   useColorModeValue,
-  useColorMode,
 } from "@chakra-ui/react";
-import {
-  CloseIcon,
-  HamburgerIcon,
-  ChevronRightIcon,
-  ChevronLeftIcon,
-} from "@chakra-ui/icons";
-import { IoMoon, IoSunny } from "react-icons/io5";
-import NextLink from "next/link";
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import MotionFlex from "../../motion/MotionFlex";
 import { useRouter } from "next/router";
 
 export const ViewerFooter = ({ isVisible, nextEpisode, prevEpisode }) => {
-  const { colorMode, toggleColorMode } = useColorMode();
   const nextEpisodeID = nextEpisode ? nextEpisode.id : null;
   const prevEpisodeID = prevEpisode ? prevEpisode.id : null;
   const router = useRouter();
@@ -45,39 +36,37 @@ export const ViewerFooter = ({ isVisible, nextEpisode, prevEpisode }) => {
         }}
       >
         <Container as={Flex} maxW={"7xl"} align={"center"}>
-          <Flex flex={{ base: 1 }}>
-            <Flex flex={{ base: 1 }} justify={{ base: "center" }}>
-              {isVisible && (
-                <Stack
-                  direction={"row"}
-                  alignItems={"center"}
-                  spacing={{ base: 10 }}
-                >
-                  <IconButton
-                    variant="outline"
-                    onClick={() => {
-                      router.push(`/episode/${prevEpisodeID}`);
-                    }}
-                    colorScheme={prevEpisodeID ? "purple" : "gray"}
-                    borderRadius={"full"}
-                    aria-label="Previous"
-                    icon={<ChevronLeftIcon />}
-                    isDisabled={prevEpisodeID ? false : true}
-                  />
-                  <IconButton
-                    variant="outline"
-                    onClick={() => {
-                      router.push(`/episode/${nextEpisodeID}`);
-                    }}
-                    colorScheme={nextEpisodeID ? "purple" : "gray"}
-                    borderRadius={"full"}
-                    aria-label="Next"
-                    icon={<ChevronRightIcon />}
-                    isDisabled={nextEpisodeID ? false : true}
-                  />
-                </Stack>
-              )}
-            </Flex>
+          <Flex flex={{ base: 1 }} justify={{ base: "center" }}>
+            {isVisible && (
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                spacing={{ base: 10 }}
+              >
+                <IconButton
+                  variant="outline"
+                  onClick={() => {
+                    router.push(`/episode/${prevEpisodeID}`);
+                  }}
+                  colorScheme={prevEpisodeID ? "purple" : "gray"}
+                  borderRadius={"full"}
+                  aria-label="Previous"
+                  icon={<ChevronLeftIcon />}
+                  isDisabled={prevEpisodeID ? false : true}
+                />
+                <IconButton
+                  variant="outline"
+                  onClick={() => {
+                    router.push(`/episode/${nextEpisodeID}`);
+                  }}
+                  colorScheme={nextEpisodeID ? "purple" : "gray"}
+                  borderRadius={"full"}
+                  aria-label="Next"
+                  icon={<ChevronRightIcon />}
+                  isDisabled={nextEpisodeID ? false : true}
+                />
+              </Stack>
+            )}
           </Flex>
         </Container>
       </MotionFlex>
