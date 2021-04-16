@@ -3,9 +3,16 @@ import {
   ViewerHeader,
   ViewerFooter,
 } from "../components/Viewer/ViewerNavigation";
-import { Container, useColorModeValue } from "@chakra-ui/react";
+import {
+  Container,
+  useColorModeValue,
+  useOutsideClick,
+} from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
-import ViewerImageList from "../components/Viewer/ViewerImageList";
+import {
+  ViewerPageImageList,
+  ViewerScrollImageList,
+} from "../components/Viewer/ViewerImageList";
 
 export const Viewer = ({
   children,
@@ -15,41 +22,62 @@ export const Viewer = ({
   prevEpisode,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const scrollHandler = useCallback(() => {
-    let scrollHeight = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    let scrollTop = Math.max(
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    );
-    let clientHeight = document.documentElement.clientHeight;
-    if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
-      setIsVisible(true);
-    else setIsVisible(false);
+  const [isScroll, setIsScroll] = useState(true);
+
+  const ref = React.useRef();
+
+  const scrollHandler = useCallback(
+    (e) => {
+      if (!isScroll) return;
+      let scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      let scrollTop = Math.max(
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+      let clientHeight = document.documentElement.clientHeight;
+      if (clientHeight + scrollTop === scrollHeight || scrollTop <= 15)
+        setIsVisible(true);
+      else setIsVisible(false);
+    },
+    [isScroll]
+  );
+
+  useOutsideClick({
+    ref: ref,
+    handler: () => {
+      if (isScroll) setIsVisible(!isVisible);
+    },
   });
+
   useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-  }, []);
+    if (isScroll) {
+      window.addEventListener("scroll", scrollHandler);
+    }
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, [isScroll]);
   return (
     <>
-      <ViewerHeader isVisible={isVisible} episode={episode} />
-      <Container
-        onClick={() => setIsVisible(!isVisible)}
-        maxW={"7xl"}
-        flex={"1 0 auto"}
-        py={4}
-        px={0}
-        marginY={10}
-      >
-        {images && <ViewerImageList images={images}></ViewerImageList>}
-      </Container>
-      <ViewerFooter
-        isVisible={isVisible}
-        nextEpisode={nextEpisode}
-        prevEpisode={prevEpisode}
-      />
+      <div ref={ref} className={"ViewerMenu_Wrapper"}>
+        <ViewerHeader
+          isVisible={isVisible}
+          isScroll={isScroll}
+          setIsScroll={setIsScroll}
+          episode={episode}
+        />
+        <ViewerFooter
+          isVisible={isVisible}
+          nextEpisode={nextEpisode}
+          prevEpisode={prevEpisode}
+        />
+      </div>
+      {isScroll ? ( 
+        <ViewerScrollImageList images={images || null}></ViewerScrollImageList>
+      ) : (
+        <ViewerPageImageList images={images || null}></ViewerPageImageList>
+      )}
     </>
   );
 };

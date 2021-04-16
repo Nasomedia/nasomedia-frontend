@@ -11,11 +11,12 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon } from "@chakra-ui/icons";
 import { IoHome, IoMoon, IoSunny } from "react-icons/io5";
+import { CgArrowsHAlt, CgArrowsVAlt } from "react-icons/cg";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import MotionFlex from "../../motion/MotionFlex";
 
-export const ViewerHeader = ({ isVisible, episode }) => {
+export const ViewerHeader = ({ isVisible, isScroll, setIsScroll, episode }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
   return (
@@ -63,6 +64,15 @@ export const ViewerHeader = ({ isVisible, episode }) => {
             <IconButton
               size={"sm"}
               variant={"ghost"}
+              aria-label={
+                isScroll ? "Toggle Page Viewer" : "Toggle Scroll Viewer"
+              }
+              onClick={() => setIsScroll(!isScroll)}
+              icon={isScroll ? <CgArrowsHAlt /> : <CgArrowsVAlt />}
+            />
+            <IconButton
+              size={"sm"}
+              variant={"ghost"}
               aria-label={"Go Home"}
               onClick={() => router.push("/")}
               icon={<IoHome size={18} />}
@@ -83,7 +93,6 @@ export const ViewerHeader = ({ isVisible, episode }) => {
           </Stack>
         </Container>
       </MotionFlex>
-      {/* <MobileNav isOpen={isMobileNavOpen} onClose={onClose} /> */}
     </Box>
   );
 };
