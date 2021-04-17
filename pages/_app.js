@@ -11,6 +11,21 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      window.dataLayer = window.dataLayer || [];
+      // eslint-disable-next-line
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-6VRL2HP7FK", {
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+        page_title: window.document.title,
+      });
+    }
+  }, []);
   return (
     <ChakraProvider theme={theme}>
       <SEO />
@@ -21,6 +36,11 @@ function MyApp({ Component, pageProps }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-6VRL2HP7FK"
         />
       </Head>
       <Component {...pageProps} />
