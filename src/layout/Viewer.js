@@ -13,6 +13,7 @@ import {
   ViewerPageImageList,
   ViewerScrollImageList,
 } from "../components/Viewer/ViewerImageList";
+import { PageController } from "../components/Viewer/ViewerNavigation/PageController";
 
 export const Viewer = ({
   children,
@@ -23,6 +24,7 @@ export const Viewer = ({
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScroll, setIsScroll] = useState(true);
+  const [pageIndex, setPageIndex] = useState(0);
 
   const ref = React.useRef();
 
@@ -73,10 +75,24 @@ export const Viewer = ({
           prevEpisode={prevEpisode}
         />
       </div>
-      {isScroll ? ( 
+      {isScroll ? (
         <ViewerScrollImageList images={images || null}></ViewerScrollImageList>
       ) : (
-        <ViewerPageImageList images={images || null}></ViewerPageImageList>
+        <>
+          {images && (
+            <PageController
+              pageIndex={pageIndex}
+              setPageIndex={setPageIndex}
+              length={images.length}
+              isVisible={isVisible}
+              setIsVisible={setIsVisible}
+            />
+          )}
+          <ViewerPageImageList
+            images={images || null}
+            index={images && pageIndex}
+          ></ViewerPageImageList>
+        </>
       )}
     </>
   );

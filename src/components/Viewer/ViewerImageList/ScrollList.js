@@ -5,6 +5,7 @@ export const ViewerScrollImageList = ({ images }) => {
   const imageList = images
     ? images.map((image) => (
         <Image
+          maxW={"100vw"}
           css={{
             MozUserSelect: "none",
             WebkitUserSelect: "none",
@@ -20,7 +21,7 @@ export const ViewerScrollImageList = ({ images }) => {
     : null;
   return (
     <Container
-      w={"2xl"}
+      maxW={"2xl"}
       padding={0}
       //  py={4}
       // px={0}

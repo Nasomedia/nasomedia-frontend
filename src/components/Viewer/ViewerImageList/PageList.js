@@ -1,33 +1,43 @@
-import { Container, Flex, Image, Skeleton } from "@chakra-ui/react";
+import { Container, Flex, Image, Skeleton, Box } from "@chakra-ui/react";
 import React from "react";
 
-export const ViewerPageImageList = ({ images }) => {
+export const ViewerPageImageList = ({ images, index }) => {
   const imageList = images
     ? images.map((image) => (
-        <Image
-          css={{
-            MozUserSelect: "none",
-            WebkitUserSelect: "none",
-            msUserSelect: "none",
-            userSelect: "none",
-            pointerEvents: "none",
-          }}
-          flex={"0 0 auto"}
-          maxH={"full"}
-          minH={{ base: "none", md: "100vh" }}
+        <Box
           key={`${image.id}`}
-          src={image.url}
-          fallback={<Skeleton w={"full"} h={"full"} />}
-        />
+          minW={{ base: "full", sm: "100vw", md: "2xl" }}
+        >
+          <Image
+            css={{
+              MozUserSelect: "none",
+              WebkitUserSelect: "none",
+              msUserSelect: "none",
+              userSelect: "none",
+              pointerEvents: "none",
+              margin: "0 auto",
+            }}
+            h={"100vh"}
+            objectFit={"contain"}
+            flex={"0 0 auto"}
+            src={image.url}
+            fallback={<Skeleton w={"full"} h={"full"} />}
+          />
+        </Box>
       ))
     : null;
   return (
-    <Container maxW={{ base: "2xl", md: "3xl" }} padding={0} overflowX={"hidden"}>
+    <Container maxW={"2xl"} padding={0} overflowX={"hidden"}>
       <Flex
         flexDirection={"row"}
-        maxH={"100vh"}
         flexWrap={"nowrap"}
         whiteSpace={"nowrap"}
+        transition={"transform 0.5s"}
+        transform={{
+          base: `translate3d(calc(0px - ${index} * 100vw), 0, 0);`,
+          sm: `translate3d(calc(0px - ${index} * 100vw), 0, 0)`,
+          md: `translate3d(calc(0px - ${index} * var(--chakra-sizes-2xl)), 0, 0)`,
+        }}
       >
         {imageList}
       </Flex>
