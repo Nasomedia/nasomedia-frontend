@@ -6,6 +6,8 @@ import theme from "../src/components/theme";
 import NProgress from "nprogress";
 import { SEO } from "../src/components/SEO";
 import { PWA } from "../src/components/PWA";
+import { useEffect } from "react";
+
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
