@@ -26,7 +26,7 @@ export const Viewer = ({
   const [isScroll, setIsScroll] = useState(true);
   const [pageIndex, setPageIndex] = useState(0);
 
-  const ref = React.useRef();
+  const menuRef = React.useRef();
 
   const scrollHandler = useCallback(
     (e) => {
@@ -48,7 +48,7 @@ export const Viewer = ({
   );
 
   useOutsideClick({
-    ref: ref,
+    ref: menuRef,
     handler: () => {
       if (isScroll) setIsVisible(!isVisible);
     },
@@ -62,7 +62,7 @@ export const Viewer = ({
   }, [isScroll]);
   return (
     <>
-      <div ref={ref} className={"ViewerMenu_Wrapper"}>
+      <div ref={menuRef} className={"ViewerMenu_Wrapper"}>
         <ViewerHeader
           isVisible={isVisible}
           isScroll={isScroll}

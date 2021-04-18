@@ -15,7 +15,7 @@ export const ViewerScrollImageList = ({ images }) => {
           }}
           key={`${image.id}`}
           src={image.url}
-          fallback={<Skeleton w={"full"} h={"70vh"} />}
+          fallback={<Skeleton w={"full"} h={"70%"} />}
         />
       ))
     : null;
