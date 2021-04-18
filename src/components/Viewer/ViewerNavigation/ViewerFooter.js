@@ -10,7 +10,12 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import MotionFlex from "../../motion/MotionFlex";
 import { useRouter } from "next/router";
 
-export const ViewerFooter = ({ isVisible, nextEpisode, prevEpisode }) => {
+export const ViewerFooter = ({
+  isVisible,
+  nextEpisode,
+  prevEpisode,
+  setPageIndex,
+}) => {
   const nextEpisodeID = nextEpisode ? nextEpisode.id : null;
   const prevEpisodeID = prevEpisode ? prevEpisode.id : null;
   const router = useRouter();
