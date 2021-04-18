@@ -18,7 +18,7 @@ export default function Login() {
       </Head>
       <Box
         width={"full"}
-        height={"100vh"}
+        height={"100%"}
         bgGradient={useColorModeValue(
           "rgba(240, 240, 240, 0.8)",
           "rgba(26, 32, 44, 0.8)"
