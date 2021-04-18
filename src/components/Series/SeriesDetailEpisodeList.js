@@ -18,7 +18,7 @@ const EpisodeListBox = ({ episode }) => {
   const updateAt = new Date(episode.update_at);
   const [isNew, setIsNew] = useState(null);
   useEffect(() => {
-    const newTime = new Date().getTime() - 86400000 * 3;
+    const newTime = new Date().getTime() - 86400000 * 1;
     setIsNew(updateAt.getTime() > newTime ? true : false);
   }, [updateAt, isNew]);
   return (
