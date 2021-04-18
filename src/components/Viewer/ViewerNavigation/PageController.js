@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, useColorModeValue, Flex } from "@chakra-ui/react";
+import { Box, useColorModeValue, Flex, useToast } from "@chakra-ui/react";
 import { useSwipeable } from "react-swipeable";
 import MotionFlex from "../../motion/MotionFlex";
 
@@ -111,14 +111,43 @@ export const PageController = ({
   isVisible,
   setIsVisible,
 }) => {
+  const toast = useToast();
+  const firstIndex = "info-first-index";
+  const lastIndex = "info-last-index";
   const setNextIndex = () => {
     if (length > pageIndex + 1) {
       setPageIndex(pageIndex + 1);
+    }
+    if (length === pageIndex + 1) {
+      if (!toast.isActive(lastIndex)) {
+        console.log("testtoast2");
+        toast({
+          id: lastIndex,
+          title: "마지막 페이지입니다.",
+          status: "info",
+          variant: "left-accent",
+          position: "bottom-right",
+          isClosable: true,
+        });
+      }
     }
   };
   const setPreviousIndex = () => {
     if (pageIndex - 1 >= 0) {
       setPageIndex(pageIndex - 1);
+    }
+    if (pageIndex === 0) {
+      if (!toast.isActive(firstIndex)) {
+        console.log("testtoast1");
+        toast({
+          id: firstIndex,
+          title: "첫번째 페이지입니다.",
+          status: "info",
+          variant: "left-accent",
+          position: "bottom-right",
+          isClosable: true,
+        });
+      }
     }
   };
   const swipeConfig = {
