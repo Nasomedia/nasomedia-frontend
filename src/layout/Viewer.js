@@ -3,28 +3,20 @@ import {
   ViewerHeader,
   ViewerFooter,
 } from "../components/Viewer/ViewerNavigation";
-import {
-  Container,
-  useColorModeValue,
-  useOutsideClick,
-} from "@chakra-ui/react";
+import { useOutsideClick } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
 import {
   ViewerPageImageList,
   ViewerScrollImageList,
 } from "../components/Viewer/ViewerImageList";
 import { PageController } from "../components/Viewer/ViewerNavigation/PageController";
+import { useRouter } from "next/router";
 
-export const Viewer = ({
-  children,
-  episode,
-  images,
-  nextEpisode,
-  prevEpisode,
-}) => {
+export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScroll, setIsScroll] = useState(true);
   const [pageIndex, setPageIndex] = useState(0);
+  const router = useRouter();
 
   const menuRef = React.useRef();
 
@@ -60,6 +52,10 @@ export const Viewer = ({
     }
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [isScroll]);
+
+  useEffect(() => {
+    setPageIndex(0);
+  }, [router]);
   return (
     <>
       <div ref={menuRef} className={"ViewerMenu_Wrapper"}>
@@ -73,6 +69,7 @@ export const Viewer = ({
           isVisible={isVisible}
           nextEpisode={nextEpisode}
           prevEpisode={prevEpisode}
+          setPageIndex={setPageIndex}
         />
       </div>
       {isScroll ? (
