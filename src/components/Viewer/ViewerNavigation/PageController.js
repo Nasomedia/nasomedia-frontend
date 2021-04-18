@@ -1,10 +1,19 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, useColorModeValue, Flex } from "@chakra-ui/react";
+import { useSwipeable } from "react-swipeable";
 import MotionFlex from "../../motion/MotionFlex";
 
 const LeftController = ({ onClick, isVisible }) => {
   return (
-    <Box onClick={onClick}>
+    <Box
+      onClick={onClick}
+      css={{
+        userSelect: "none",
+        msUserSelect: "none",
+        MozUserSelect: "none",
+        WebkitUserSelect: "none",
+      }}
+    >
       <MotionFlex
         as={"nav"}
         pos={"fixed"}
@@ -33,7 +42,15 @@ const LeftController = ({ onClick, isVisible }) => {
 
 const RightController = ({ onClick, isVisible }) => {
   return (
-    <Box onClick={onClick}>
+    <Box
+      onClick={onClick}
+      css={{
+        userSelect: "none",
+        msUserSelect: "none",
+        MozUserSelect: "none",
+        WebkitUserSelect: "none",
+      }}
+    >
       <MotionFlex
         aria-label={"next-image"}
         as={"nav"}
@@ -63,7 +80,15 @@ const RightController = ({ onClick, isVisible }) => {
 
 const CenterController = ({ onClick }) => {
   return (
-    <Box onClick={onClick}>
+    <Box
+      onClick={onClick}
+      css={{
+        userSelect: "none",
+        msUserSelect: "none",
+        MozUserSelect: "none",
+        WebkitUserSelect: "none",
+      }}
+    >
       <Flex
         as={"nav"}
         pos={"fixed"}
@@ -96,8 +121,23 @@ export const PageController = ({
       setPageIndex(pageIndex - 1);
     }
   };
+  const swipeConfig = {
+    preventDefaultTouchmoveEvent: false, // call e.preventDefault *See Details*
+    trackTouch: true, // track touch input
+    trackMouse: true, // track mouse input
+    rotationAngle: 0, // set a rotation angle
+  };
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      setNextIndex();
+    },
+    onSwipedRight: () => {
+      setPreviousIndex();
+    },
+    ...swipeConfig,
+  });
   return (
-    <div className={"PageController_Wrapper"}>
+    <div className={"PageController_Wrapper"} {...swipeHandlers}>
       <LeftController onClick={setPreviousIndex} isVisible={isVisible} />
       <CenterController
         onClick={() => {

@@ -15,7 +15,7 @@ const fonts = {
 
 const styles = {
   global: {
-    "html, #__next": {
+    "html, #__next, body": {
       height: "100%",
     },
     "#__next": {
