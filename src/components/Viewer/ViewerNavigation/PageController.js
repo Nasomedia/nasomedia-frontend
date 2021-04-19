@@ -154,7 +154,6 @@ export const PageController = ({
     preventDefaultTouchmoveEvent: false, // call e.preventDefault *See Details*
     trackTouch: true, // track touch input
     trackMouse: true, // track mouse input
-    rotationAngle: 0, // set a rotation angle
   };
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
