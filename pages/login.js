@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <div>
       <Head>
-        <title>로그인</title>
+        <title>로그인 - 나소미디어</title>
       </Head>
       <Box
         width={"full"}

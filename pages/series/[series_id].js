@@ -9,7 +9,7 @@ const SeriesDetail = ({ series, episodes }) => {
   return (
     <MainLayout>
       <Head>
-        <title>{series.title}</title>
+        <title>{series.title} | 나소미디어</title>
       </Head>
       <Stack
         direction={{ base: "column", md: "row" }}

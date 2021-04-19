@@ -6,7 +6,7 @@ export default function Ranking() {
   return (
     <MainLayout>
       <Head>
-        <title>랭킹</title>
+        <title>랭킹 - 나소미디어</title>
       </Head>
       <Stack>
         <Heading>랭킹</Heading>

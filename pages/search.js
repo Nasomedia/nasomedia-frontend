@@ -14,7 +14,7 @@ import {
     return (
       <div>
         <Head>
-          <title>검색</title>
+          <title>검색 | 나소미디어</title>
         </Head>
         <Box
           width={"full"}

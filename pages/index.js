@@ -8,7 +8,7 @@ const index = ({ tabUpdates }) => {
   return (
     <MainLayout>
       <Head>
-        <title>NASOMEDIA</title>
+        <title>나소미디어</title>
       </Head>
       <Stack spacing={10}>
         <Box>

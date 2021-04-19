@@ -6,7 +6,7 @@ export default function Finder() {
   return (
     <MainLayout>
       <Head>
-        <title>상세검색</title>
+        <title>상세검색 - 나소미디어</title>
       </Head>
       <Stack>
         <Heading>상세검색</Heading>

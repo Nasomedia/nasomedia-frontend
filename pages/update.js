@@ -6,7 +6,7 @@ export default function Updates() {
   return (
     <MainLayout>
       <Head>
-        <title>업데이트된 목록</title>
+        <title>업데이트 - 나소미디어</title>
       </Head>
       <Stack>
         <Heading>업데이트</Heading>

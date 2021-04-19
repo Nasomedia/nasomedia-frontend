@@ -22,7 +22,7 @@ const EpisodeView = ({
     <>
       <Head>
         <title>
-          {series.title} - {episode.title}
+          {series.title} - {episode.title} | 나소미디어
         </title>
         <script
           type="application/ld+json"
