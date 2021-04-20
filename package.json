@@ -23,7 +23,7 @@
     "react-icons": "^4.2.0",
     "react-swipeable": "^6.1.0",
     "solider": "^1.1.1",
-    "swr": "^0.5.4"
+    "swr": "^0.5.5"
   },
   "devDependencies": {
     "webpack": "^4.46.0"

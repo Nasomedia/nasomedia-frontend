@@ -13,6 +13,8 @@ import {
   HStack,
   LinkBox,
   LinkOverlay,
+  Center,
+  Img,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
@@ -45,7 +47,9 @@ const ListBox = ({ imageURL, title, id }) => {
       <Box as={"a"} width={"9rem"} height={"56"}>
         <Image
           width={"8.5rem"}
+          htmlWidth={"8.5rem"}
           h={"11rem"}
+          htmlHeight={"11rem"}
           objectFit="cover"
           fallback={<TabListImageSkeleton />}
           borderRadius="lg"
@@ -106,10 +110,18 @@ const TabSeriesListTabPanels = ({ updates }) => {
         <UpdateList updates={updates} />
       </TabPanel>
       <TabPanel>
-        <p>랭킹</p>
+        <Text>랭킹</Text>
+        <Center flexDirection={"column"}>
+          <Img mt={4} src={"/error_black.png"} />
+          <Text mt={8}>아직 준비중입니다.</Text>
+        </Center>
       </TabPanel>
       <TabPanel>
-        <p>랭킹</p>
+        <Text>신작</Text>
+        <Center flexDirection={"column"}>
+          <Img mt={4} src={"/error_black.png"} />
+          <Text mt={8}>아직 준비중입니다.</Text>
+        </Center>
       </TabPanel>
     </TabPanels>
   );

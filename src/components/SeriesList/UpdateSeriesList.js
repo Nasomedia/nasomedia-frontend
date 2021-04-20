@@ -1,23 +1,17 @@
 import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Button,
   Box,
-  Spacer,
   Image,
-  useBreakpointValue,
   Text,
-  HStack,
-  LinkBox,
-  LinkOverlay,
+  Container,
+  Wrap,
+  WrapItem,
+  Skeleton,
+  Stack,
+  Center,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import NextLink from "next/link";
-import { useState } from "react";
 import { TabListImageSkeleton } from "../ImageSkeleton";
+import { ListBoxSkeleton } from "./ListBoxSkeleton";
 
 const ListBox = ({ imageURL, title, id }) => {
   return (
@@ -53,47 +47,40 @@ const ListBox = ({ imageURL, title, id }) => {
   );
 };
 
-const UpdateList = ({ updates }) => {
-  return (
-    <HStack
-      pt={3}
-      maxW={"full"}
-      overflowX="scroll"
-      spacing={4}
-      css={{
-        scrollbarWidth: "none",
-        "&::-webkit-scrollbar": { display: "none" },
-      }}
-    >
-      {updates &&
-        updates.map((updateItem) => (
-          <ListBox
-            key={`${updateItem.id}`}
-            imageURL={updateItem.thumbnail}
-            title={updateItem.title}
-            id={`${updateItem.id}`}
-          />
-        ))}
-    </HStack>
-  );
-};
-
-
 export const UpdateSeriesList = (props) => {
-  const [tabIndex, setTabIndex] = useState(0);
-  const isLargerThan440 = useBreakpointValue({ base: false, sm: true });
   const { updates } = props;
   return (
-    <Box {...props}>
-      <Tabs
-        isFitted={isLargerThan440}
-        onChange={(index) => setTabIndex(index)}
-        size="sm"
-        colorScheme={"purple"}
-      >
-        <TabSeriesListTabs index={tabIndex} />
-        <TabSeriesListTabPanels updates={updates} />
-      </Tabs>
-    </Box>
+    <Wrap
+      flexWrap={"wrap"}
+      pt={3}
+      w={"full"}
+      spacing={4}
+      justify={{
+        base: "center",
+        md: `${updates.length > 6 ? "center" : "unset"}`,
+      }}
+    >
+      {updates ? (
+        updates.map((updateItem) => (
+          <WrapItem key={`${updateItem.id}`}>
+            <ListBox
+              imageURL={updateItem.thumbnail}
+              title={updateItem.title}
+              id={`${updateItem.id}`}
+            />
+          </WrapItem>
+        ))
+      ) : (
+        <>
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+          <ListBoxSkeleton />
+        </>
+      )}
+    </Wrap>
   );
 };
