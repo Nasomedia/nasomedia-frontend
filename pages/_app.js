@@ -34,11 +34,7 @@ function MyApp({ Component, pageProps }) {
       <PWA />
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-6VRL2HP7FK"
