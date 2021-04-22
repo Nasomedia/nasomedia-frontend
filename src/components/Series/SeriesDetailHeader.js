@@ -60,7 +60,7 @@ const SeriesDetailHeader = ({ series }) => {
           />
         </Box>
       </Box>
-      <Heading zIndex={10} mt={6}>{series.title}</Heading>
+      <Heading zIndex={10} mt={12}>{series.title}</Heading>
       <Box as="span" color="gray.400" fontSize="sm">
         장르: - | -세 이용가 | 작가: -
       </Box>
