@@ -65,6 +65,7 @@ export const MainHeader = () => {
           <Flex
             flex={{ base: 1, md: "auto" }}
             justify={{ base: "center", md: "start" }}
+            alignItems={{ md: "center" }}
           >
             <NextLink href={"/"} passHref>
               <Stack
@@ -92,11 +93,10 @@ export const MainHeader = () => {
                   spacing={8}
                   flex={{ base: 1, md: "auto" }}
                   justify={"flex-end"}
-                >
-                  <DesktopNavLeft display={{ base: "none", md: "flex" }} />
-                </Stack>
+                ></Stack>
               </Stack>
             </NextLink>
+            <DesktopNavLeft display={{ base: "none", md: "flex" }} />
           </Flex>
 
           <Stack
