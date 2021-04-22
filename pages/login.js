@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import Head from "next/head"
+import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
@@ -18,6 +18,7 @@ export default function Login() {
       </Head>
       <Box
         width={"full"}
+        marginTop={{ base: "33%", md: "40" }}
         height={"100%"}
         bgGradient={useColorModeValue(
           "rgba(240, 240, 240, 0.8)",
