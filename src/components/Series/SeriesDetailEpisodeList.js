@@ -29,6 +29,11 @@ const EpisodeListBox = ({ episode }) => {
         "rgba(46, 52, 64, 0.8)"
       )}
       w={"full"}
+      borderRadius={"md"}
+      boxShadow={useColorModeValue(
+        "6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff",
+        "6px 6px 12px #272c36, -6px -6px 12px #353c4a"
+      )}
       flexDirection={"row"}
     >
       <Image
@@ -56,7 +61,9 @@ const EpisodeListBox = ({ episode }) => {
             color={useColorModeValue("gray.500", "gray.200")}
           >
             {updateAt
-              ? `${updateAt.getFullYear()}.${updateAt.getMonth() + 1}.${updateAt.getDate()}`
+              ? `${updateAt.getFullYear()}.${
+                  updateAt.getMonth() + 1
+                }.${updateAt.getDate()}`
               : "-"}
           </Text>
         </Flex>
@@ -68,7 +75,7 @@ const EpisodeListBox = ({ episode }) => {
 
 const SeriesDetailEpisodeList = ({ episodes }) => {
   return (
-    <VStack spacing={4} m={2} px={{ base: 0, md: 8 }} w={"full"}>
+    <VStack spacing={"5"} m={2} px={{ base: 0, md: 8 }} w={"full"}>
       <Divider my={2} />
       {episodes &&
         episodes.map((episode) => (
