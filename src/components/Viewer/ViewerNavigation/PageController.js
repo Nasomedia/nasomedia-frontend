@@ -153,7 +153,7 @@ export const PageController = ({
   const swipeConfig = {
     preventDefaultTouchmoveEvent: false, // call e.preventDefault *See Details*
     trackTouch: true, // track touch input
-    trackMouse: true, // track mouse input
+    trackMouse: false, // track mouse input
   };
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
