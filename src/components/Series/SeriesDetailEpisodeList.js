@@ -34,7 +34,7 @@ const EpisodeListBox = ({ episode }) => {
         "6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff",
         "6px 6px 12px #10131a, -6px -6px 12px #242d3e;"
       )}
-      transition={"box-shadow 0.1s ease-in"}
+      transition={"box-shadow 0.075s ease-in"}
       flexDirection={"row"}
       _hover={{
         boxShadow: useColorModeValue(
