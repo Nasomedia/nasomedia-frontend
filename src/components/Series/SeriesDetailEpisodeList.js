@@ -26,13 +26,13 @@ const EpisodeListBox = ({ episode }) => {
       as={Flex}
       bg={useColorModeValue(
         "rgba(250, 250, 250, 0.8)",
-        "rgba(46, 52, 64, 0.8)"
+        "linear-gradient(145deg, #171d28, #1c222f)"
       )}
       w={"full"}
       borderRadius={"md"}
       boxShadow={useColorModeValue(
         "6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff",
-        "6px 6px 12px #272c36, -6px -6px 12px #353c4a"
+        "6px 6px 12px #10131a, -6px -6px 12px #242d3e;"
       )}
       flexDirection={"row"}
     >
