@@ -34,7 +34,20 @@ const EpisodeListBox = ({ episode }) => {
         "6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff",
         "6px 6px 12px #10131a, -6px -6px 12px #242d3e;"
       )}
+      transition={"box-shadow 0.1s ease-in"}
       flexDirection={"row"}
+      _hover={{
+        boxShadow: useColorModeValue(
+          "3px 3px 6px #d5d5d5, -3px -3px 6px #ffffff",
+          "3px 3px 6px #10131a, -3px -3px 6px #242d3e;"
+        ),
+      }}
+      _active={{
+        boxShadow: useColorModeValue(
+          "inset 6px 6px 12px #d5d5d5, inset -6px -6px 12px #ffffff",
+          "inset 6px 6px 12px #10131a, inset -6px -6px 12px #242d3e;"
+        ),
+      }}
     >
       <Image
         w={"28"}
