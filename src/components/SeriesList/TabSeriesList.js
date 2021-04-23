@@ -83,6 +83,7 @@ const UpdateList = ({ updates }) => {
       pt={3}
       maxW={"full"}
       overflowX="scroll"
+      overflowY="hidden"
       spacing={4}
       css={{
         scrollbarWidth: "none",
