@@ -5,6 +5,8 @@ import {
   IconButton,
   Flex,
   Spacer,
+  Button,
+  useToast,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import useSWR, { useSWRInfinite } from "swr";
@@ -13,7 +15,8 @@ import { UpdateSeriesList } from "../src/components/SeriesList/UpdateSeriesList"
 import { BASE_URL } from "../src/constants";
 import { MainLayout } from "../src/layout/MainLayout";
 import { readSeriesesByUpdate } from "../src/utils/api";
-import { IoRefreshCircle } from "react-icons/io5";
+import { MdRefresh } from "react-icons/md";
+import { useEffect } from "react";
 
 const PAGE_SIZE = 20;
 
@@ -39,6 +42,7 @@ export default function Updates({ initialUpdates }) {
   const isReachingEnd =
     isEmpty || (updates && updates[updates.length - 1]?.length < PAGE_SIZE);
   const isRefreshing = isValidating && updates && updates.length === size;
+  const toast = useToast();
 
   return (
     <MainLayout>
@@ -50,13 +54,33 @@ export default function Updates({ initialUpdates }) {
         <Flex alignItems={"center"}>
           <Text>실시간으로 업데이트 되는 목록들!</Text>
           <Spacer />
-          <IconButton
+          <Button
             isLoading={isRefreshing}
+            loadingText={"새로고침중..."}
             colorScheme={"purple"}
+            variant={"outline"}
             aria-label={"Refresh Updates"}
-            icon={<IoRefreshCircle />}
-            onClick={() => mutate()}
-          ></IconButton>
+            leftIcon={<MdRefresh />}
+            onClick={async () => {
+              toast({
+                title: "새로고침 합니다.",
+                status: "info",
+                duration: 1000,
+                isClosable: true,
+              });
+              await mutate();
+              if (!isRefreshing && !error) {
+                toast({
+                  title: "새로고침 되었습니다.",
+                  status: "success",
+                  duration: 1000,
+                  isClosable: true,
+                });
+              }
+            }}
+          >
+            새로고침
+          </Button>
         </Flex>
         <UpdateSeriesList updates={updates}></UpdateSeriesList>
       </Stack>
