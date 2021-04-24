@@ -21,7 +21,7 @@ export default function Updates({ initialUpdates }) {
         <title>업데이트 - 나소미디어</title>
         <link
           rel="preload"
-          href="https://naso-media-backend.herokuapp.com/series/update"
+          href={`${BASE_URL}/series/update`}
           as="fetch"
           crossorigin="anonymous"
         />
