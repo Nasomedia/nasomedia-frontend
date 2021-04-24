@@ -10,6 +10,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { useEffect } from "react";
 import { TabListImageSkeleton } from "../ImageSkeleton";
 import { ListBoxSkeleton } from "./ListBoxSkeleton";
 
@@ -49,6 +50,9 @@ const ListBox = ({ imageURL, title, id }) => {
 
 export const UpdateSeriesList = (props) => {
   const { updates } = props;
+  useEffect(() => {
+    console.log(updates);
+  }, [updates]);
   return (
     <Wrap
       flexWrap={"wrap"}
@@ -59,27 +63,17 @@ export const UpdateSeriesList = (props) => {
         md: `${updates.length > 6 ? "center" : "unset"}`,
       }}
     >
-      {updates ? (
-        updates.map((updateItem) => (
-          <WrapItem key={`${updateItem.id}`}>
-            <ListBox
-              imageURL={updateItem.thumbnail}
-              title={updateItem.title}
-              id={`${updateItem.id}`}
-            />
-          </WrapItem>
-        ))
-      ) : (
-        <>
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-          <ListBoxSkeleton />
-        </>
-      )}
+      {updates
+        ? updates.map((updateItem) => (
+            <WrapItem key={`${updateItem.id}`}>
+              <ListBox
+                imageURL={updateItem.thumbnail}
+                title={updateItem.title}
+                id={`${updateItem.id}`}
+              />
+            </WrapItem>
+          ))
+        : null}
     </Wrap>
   );
 };
