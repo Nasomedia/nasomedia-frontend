@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   ViewerHeader,
   ViewerFooter,
 } from "../components/Viewer/ViewerNavigation";
 import { useOutsideClick } from "@chakra-ui/react";
-import { useEffect, useState, useCallback } from "react";
 import {
   ViewerPageImageList,
   ViewerScrollImageList,
