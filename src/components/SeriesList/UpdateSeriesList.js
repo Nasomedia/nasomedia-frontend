@@ -16,7 +16,7 @@ import { ListBoxSkeleton } from "./ListBoxSkeleton";
 const ListBox = ({ imageURL, title, id }) => {
   return (
     <NextLink href={`/series/${id}`} passHref>
-      <Box as={"a"} width={"9rem"} height={"56"}>
+      <Box as={"a"} overflowY={"hidden"} width={"9rem"} height={"56"}>
         <Image
           width={"8.5rem"}
           h={"11rem"}
@@ -52,7 +52,6 @@ export const UpdateSeriesList = (props) => {
   return (
     <Wrap
       flexWrap={"wrap"}
-      pt={3}
       w={"full"}
       spacing={4}
       justify={{
