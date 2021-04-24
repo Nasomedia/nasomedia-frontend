@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 
 export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isScroll, setIsScroll] = useState(true);
+  const [isScrollView, setIsScrollView] = useState(true);
   const [pageIndex, setPageIndex] = useState(0);
   const router = useRouter();
 
@@ -22,7 +22,7 @@ export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
 
   const scrollHandler = useCallback(
     (e) => {
-      if (!isScroll) return;
+      if (!isScrollView) return;
       let scrollHeight = Math.max(
         document.documentElement.scrollHeight,
         document.body.scrollHeight
@@ -36,22 +36,22 @@ export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
         setIsVisible(true);
       else setIsVisible(false);
     },
-    [isScroll]
+    [isScrollView]
   );
 
-  useOutsideClick({
-    ref: menuRef,
-    handler: () => {
-      if (isScroll) setIsVisible(!isVisible);
-    },
-  });
+  // useOutsideClick({
+  //   ref: menuRef,
+  //   handler: () => {
+  //     if (isScrollView) setIsVisible(!isVisible);
+  //   },
+  // });
 
   useEffect(() => {
-    if (isScroll) {
+    if (isScrollView) {
       window.addEventListener("scroll", scrollHandler);
     }
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [isScroll]);
+  }, [isScrollView]);
 
   useEffect(() => {
     setPageIndex(0);
@@ -61,8 +61,8 @@ export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
       <div ref={menuRef} className={"ViewerMenu_Wrapper"}>
         <ViewerHeader
           isVisible={isVisible}
-          isScroll={isScroll}
-          setIsScroll={setIsScroll}
+          isScroll={isScrollView}
+          setIsScroll={setIsScrollView}
           episode={episode}
         />
         <ViewerFooter
@@ -72,8 +72,13 @@ export const Viewer = ({ episode, images, nextEpisode, prevEpisode }) => {
           setPageIndex={setPageIndex}
         />
       </div>
-      {isScroll ? (
-        <ViewerScrollImageList images={images || null}></ViewerScrollImageList>
+      {isScrollView ? (
+        <ViewerScrollImageList
+          onClick={() => {
+            if (isScrollView) setIsVisible(!isVisible);
+          }}
+          images={images || null}
+        ></ViewerScrollImageList>
       ) : (
         <>
           {images && (

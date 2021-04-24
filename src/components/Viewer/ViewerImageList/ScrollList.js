@@ -1,7 +1,8 @@
 import { Container, Flex, Image, Skeleton } from "@chakra-ui/react";
 import React from "react";
 
-export const ViewerScrollImageList = ({ images }) => {
+export const ViewerScrollImageList = (props) => {
+  const { images } = props;
   const imageList = images
     ? images.map((image) => (
         <Image
@@ -26,6 +27,7 @@ export const ViewerScrollImageList = ({ images }) => {
       //  py={4}
       // px={0}
       //  marginY={10}
+      {...props}
     >
       <Flex flexDirection={"column"}>{imageList}</Flex>
     </Container>
