@@ -8,6 +8,7 @@ export const ViewerPageImageList = ({ images, index }) => {
           key={`${image.id}`}
           minW={{ base: "full", sm: "100vw", md: "2xl" }}
           alignItems={"center"}
+          justifyContent={"center"}
         >
           <Image
             css={{
