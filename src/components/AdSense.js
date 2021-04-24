@@ -2,8 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 export const AdSense = () => {
-  router = useRouter();
-  isAds = router.asPath.includes("episode") ? false : true;
+  const router = useRouter();
+  const isAds = router.asPath.includes("episode") ? false : true;
   return isAds ? (
     <Head>
       <script
