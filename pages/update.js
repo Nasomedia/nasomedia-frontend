@@ -44,6 +44,10 @@ export default function Updates({ initialUpdates }) {
   const isRefreshing = isValidating && updates && updates.length === size;
   const toast = useToast();
 
+  useEffect(() => {
+    mutate();
+  }, [])
+
   return (
     <MainLayout>
       <Head>
