@@ -6,7 +6,6 @@ export const ViewerScrollImageList = (props) => {
   const imageList = images
     ? images.map((image) => (
         <Image
-          maxW={"100vw"}
           css={{
             MozUserSelect: "none",
             WebkitUserSelect: "none",
