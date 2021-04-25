@@ -89,22 +89,30 @@ const EpisodeListBox = ({ episode }) => {
   );
 };
 
-const EpisodeList = ({ episodes, isAsc }) => {
-  return isAsc
-    ? episodes.map((episode) => (
-        <EpisodeListBox key={episode.id} episode={episode} />
-      ))
-    : episodes
-        .reverse()
-        .map((episode) => (
-          <EpisodeListBox key={episode.id} episode={episode} />
-        ));
+const EpisodeList = ({ episodes }) => {
+  return episodes.map((episode) => (
+    <EpisodeListBox key={episode.id} episode={episode} />
+  ));
 };
+
 const SeriesDetailEpisodeList = ({ episodes }) => {
-  const [isAsc, setIsAsc] = useState(true);
+  const [isAsc, setIsAsc] = useState(false);
   return (
-    <VStack spacing={"5"} m={2} px={{ base: 0, md: 8 }} w={"full"}>
-      <Flex w={"full"} alignItems={"center"}>
+    <VStack
+      spacing={"5"}
+      m={2}
+      px={{ base: 0, md: 8 }}
+      w={"full"}
+      h={"full"}
+      flexDir={isAsc ? "column" : "column-reverse"}
+    >
+      <Flex
+        w={"full"}
+        alignItems={"center"}
+        m={2}
+        px={4}
+        order={isAsc ? "unset" : "2"}
+      >
         <Divider flex={"1 1 auto"} mr={8} orientation={"horizontal"} />
         <IconButton
           icon={isAsc ? <ImSortAmountAsc /> : <ImSortAmountDesc />}
@@ -117,7 +125,7 @@ const SeriesDetailEpisodeList = ({ episodes }) => {
           }}
         />
       </Flex>
-      {episodes && <EpisodeList episodes={episodes} isAsc={isAsc} />}
+      {episodes && <EpisodeList episodes={episodes} />}
     </VStack>
   );
 };
