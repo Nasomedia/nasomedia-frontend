@@ -89,6 +89,17 @@ const EpisodeListBox = ({ episode }) => {
   );
 };
 
+const EpisodeList = ({ episodes, isAsc }) => {
+  return isAsc
+    ? episodes.map((episode) => (
+        <EpisodeListBox key={episode.id} episode={episode} />
+      ))
+    : episodes
+        .reverse()
+        .map((episode) => (
+          <EpisodeListBox key={episode.id} episode={episode} />
+        ));
+};
 const SeriesDetailEpisodeList = ({ episodes }) => {
   const [isAsc, setIsAsc] = useState(true);
   return (
@@ -106,15 +117,7 @@ const SeriesDetailEpisodeList = ({ episodes }) => {
           }}
         />
       </Flex>
-      {episodes && isAsc
-        ? episodes.map((episode) => (
-            <EpisodeListBox key={episode.id} episode={episode} />
-          ))
-        : episodes
-            .reverse()
-            .map((episode) => (
-              <EpisodeListBox key={episode.id} episode={episode} />
-            ))}
+      {episodes && <EpisodeList episodes={episodes} isAsc={isAsc} />}
     </VStack>
   );
 };
