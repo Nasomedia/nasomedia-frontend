@@ -110,15 +110,18 @@ const SeriesDetailEpisodeList = ({ episodes }) => {
         w={"full"}
         alignItems={"center"}
         m={2}
-        px={4}
+        pl={{ base: 2, md: 0.5 }}
+        pr={2}
         order={isAsc ? "unset" : "2"}
       >
         <Divider flex={"1 1 auto"} mr={8} orientation={"horizontal"} />
         <IconButton
           icon={isAsc ? <ImSortAmountAsc /> : <ImSortAmountDesc />}
           borderRadius={"full"}
+          bgColor={useColorModeValue(null, "#1a202c")}
           boxShadow={useColorModeValue(
-            "4px 4px 8px #c9ced2, -4px -4px 8px #ffffff;"
+            "4px 4px 8px #c9ced2, -4px -4px 8px #ffffff;",
+            "4px 4px 8px #0d1016, -4px -4px 8px #273042"
           )}
           onClick={() => {
             setIsAsc(!isAsc);
