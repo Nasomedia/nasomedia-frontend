@@ -9,10 +9,13 @@ import {
   LinkOverlay,
   Divider,
   Badge,
+  IconButton,
+  Spacer,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { DetailEpisodeThumbnailSkeleton } from "../ImageSkeleton";
+import { ImSortAmountAsc, ImSortAmountDesc } from "react-icons/im";
 
 const EpisodeListBox = ({ episode }) => {
   const updateAt = new Date(episode.update_at);
@@ -87,13 +90,31 @@ const EpisodeListBox = ({ episode }) => {
 };
 
 const SeriesDetailEpisodeList = ({ episodes }) => {
+  const [isAsc, setIsAsc] = useState(true);
   return (
     <VStack spacing={"5"} m={2} px={{ base: 0, md: 8 }} w={"full"}>
-      <Divider my={2} />
-      {episodes &&
-        episodes.map((episode) => (
-          <EpisodeListBox key={episode.id} episode={episode} />
-        ))}
+      <Flex w={"full"} alignItems={"center"}>
+        <Divider flex={"1 1 auto"} mr={8} orientation={"horizontal"} />
+        <IconButton
+          icon={isAsc ? <ImSortAmountAsc /> : <ImSortAmountDesc />}
+          borderRadius={"full"}
+          boxShadow={useColorModeValue(
+            "4px 4px 8px #c9ced2, -4px -4px 8px #ffffff;"
+          )}
+          onClick={() => {
+            setIsAsc(!isAsc);
+          }}
+        />
+      </Flex>
+      {episodes && isAsc
+        ? episodes.map((episode) => (
+            <EpisodeListBox key={episode.id} episode={episode} />
+          ))
+        : episodes
+            .reverse()
+            .map((episode) => (
+              <EpisodeListBox key={episode.id} episode={episode} />
+            ))}
     </VStack>
   );
 };
