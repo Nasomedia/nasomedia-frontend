@@ -10,12 +10,13 @@ import {
   Divider,
   Badge,
   IconButton,
-  Spacer,
+  Icon,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { DetailEpisodeThumbnailSkeleton } from "../ImageSkeleton";
 import { ImSortAmountAsc, ImSortAmountDesc } from "react-icons/im";
+import { IoMdEye } from "react-icons/io";
 
 const EpisodeListBox = ({ episode }) => {
   const updateAt = new Date(episode.update_at);
@@ -83,7 +84,14 @@ const EpisodeListBox = ({ episode }) => {
               : "-"}
           </Text>
         </Flex>
-        {isNew ? <Badge colorScheme={"green"}>New</Badge> : null}
+        {/* <Text fontSize={"small"} fontWeight={"light"}>
+          <Icon as={IoMdEye} /> {episode.view_count}
+        </Text> */}
+        {isNew ? (
+          <Badge marginLeft={2} colorScheme={"green"}>
+            New
+          </Badge>
+        ) : null}
       </Flex>
     </LinkBox>
   );
@@ -118,11 +126,11 @@ const SeriesDetailEpisodeList = ({ episodes }) => {
         <IconButton
           icon={isAsc ? <ImSortAmountAsc /> : <ImSortAmountDesc />}
           borderRadius={"full"}
-          bgColor={useColorModeValue(null, "#1a202c")}
-          boxShadow={useColorModeValue(
-            "4px 4px 8px #c9ced2, -4px -4px 8px #ffffff;",
-            "4px 4px 8px #0d1016, -4px -4px 8px #273042"
-          )}
+          // bgColor={useColorModeValue(null, "#1a202c")}
+          // boxShadow={useColorModeValue(
+          //   "4px 4px 8px #c9ced2, -4px -4px 8px #ffffff;",
+          //   "4px 4px 8px #0d1016, -4px -4px 8px #273042"
+          // )}
           onClick={() => {
             setIsAsc(!isAsc);
           }}
