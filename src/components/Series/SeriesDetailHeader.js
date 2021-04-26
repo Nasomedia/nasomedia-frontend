@@ -9,7 +9,33 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
+import Head from "next/head";
 import { SeriesDetailThumbnailSkeleton } from "../ImageSkeleton";
+
+const AdSenseBannerSeriesDetail = () => {
+  return (
+    <>
+      <Head>
+        <script
+          async
+          custom-element="amp-ad"
+          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+        ></script>
+      </Head>
+      <amp-ad
+        width="100vw"
+        height="320"
+        type="adsense"
+        data-ad-client="ca-pub-1638178136808231"
+        data-ad-slot="6458182040"
+        data-auto-format="rspv"
+        data-full-width=""
+      >
+        <div overflow=""></div>
+      </amp-ad>
+    </>
+  );
+};
 
 const SeriesDetailHeader = ({ series }) => {
   return (
@@ -77,6 +103,7 @@ const SeriesDetailHeader = ({ series }) => {
           <AccordionPanel py={2}>{series.description}</AccordionPanel>
         </AccordionItem>
       </Accordion>
+      <AdSenseBannerSeriesDetail />
     </Box>
   );
 };
