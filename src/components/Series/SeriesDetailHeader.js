@@ -20,6 +20,7 @@ const AdSenseBannerSeriesDetail = () => {
       }
     } catch (e) {
       console.error(e);
+      console.log("The user is using the adblock service.")
     }
   }, []);
   return (
