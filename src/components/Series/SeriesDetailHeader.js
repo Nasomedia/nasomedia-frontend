@@ -14,8 +14,12 @@ import { SeriesDetailThumbnailSkeleton } from "../ImageSkeleton";
 
 const AdSenseBannerSeriesDetail = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    try {
+      if (typeof window !== "undefined") {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error(e);
     }
   }, []);
   return (
