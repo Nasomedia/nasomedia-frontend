@@ -29,7 +29,7 @@ const AdSenseBannerSeriesDetail = () => {
       </Head>
       <ins
         class="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", marginTop: "0.5rem" }}
         data-ad-client="ca-pub-1638178136808231"
         data-ad-slot="6458182040"
         data-ad-format="auto"
