@@ -8,31 +8,33 @@ import {
   AccordionPanel,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { SeriesDetailThumbnailSkeleton } from "../ImageSkeleton";
 
 const AdSenseBannerSeriesDetail = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  }, []);
   return (
     <>
       <Head>
         <script
           async
-          custom-element="amp-ad"
-          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638178136808231"
+          crossorigin="anonymous"
         ></script>
       </Head>
-      <amp-ad
-        width="100vw"
-        height="320"
-        type="adsense"
+      <ins
+        class="adsbygoogle"
+        style={{ display: "block" }}
         data-ad-client="ca-pub-1638178136808231"
         data-ad-slot="6458182040"
-        data-auto-format="rspv"
-        data-full-width=""
-      >
-        <div overflow=""></div>
-      </amp-ad>
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
     </>
   );
 };
@@ -86,7 +88,9 @@ const SeriesDetailHeader = ({ series }) => {
           />
         </Box>
       </Box>
-      <Heading zIndex={10} mt={12}>{series.title}</Heading>
+      <Heading zIndex={10} mt={12}>
+        {series.title}
+      </Heading>
       <Box as="span" color="gray.400" fontSize="sm">
         장르: - | -세 이용가 | 작가: -
       </Box>
