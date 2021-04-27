@@ -7,7 +7,7 @@ import {
   readNextEpisode,
   readPrevEpisode,
   readSeries,
-} from "../../src/utils/api";
+} from "../../src/utils/lib/api";
 import { PRODUCTION_URL, ICON_URL } from "../../src/constants";
 
 const EpisodeView = ({

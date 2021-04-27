@@ -1,5 +1,5 @@
-import { BASE_URL } from "../../constants";
-import fetcher from "../lib/fetch";
+import { BASE_URL } from "../../../constants";
+import fetcher from "../fetch";
 
 const getURL = () => `${BASE_URL}/series`;
 

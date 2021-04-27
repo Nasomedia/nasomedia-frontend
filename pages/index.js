@@ -2,7 +2,7 @@ import { Stack, Heading, Box } from "@chakra-ui/layout";
 import Head from "next/head";
 import { MainLayout } from "../src/layout/MainLayout";
 import { TabSeriesList } from "../src/components/SeriesList";
-import { readSeriesesByUpdate } from "../src/utils/api";
+import { readSeriesesByUpdate } from "../src/utils/lib/api";
 
 const index = ({ tabUpdates }) => {
   return (

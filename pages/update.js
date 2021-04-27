@@ -14,7 +14,7 @@ import fetcher from "../src/utils/lib/fetch";
 import { UpdateSeriesList } from "../src/components/SeriesList/UpdateSeriesList";
 import { BASE_URL } from "../src/constants";
 import { MainLayout } from "../src/layout/MainLayout";
-import { readSeriesesByUpdate } from "../src/utils/api";
+import { readSeriesesByUpdate } from "../src/utils/lib/api";
 import { MdRefresh } from "react-icons/md";
 import { useEffect } from "react";
 
@@ -46,7 +46,7 @@ export default function Updates({ initialUpdates }) {
 
   useEffect(() => {
     mutate();
-  }, [])
+  }, []);
 
   return (
     <MainLayout>

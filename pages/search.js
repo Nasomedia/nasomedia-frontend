@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function Login() {
+export default function Search() {
   const router = useRouter();
   return (
     <div>

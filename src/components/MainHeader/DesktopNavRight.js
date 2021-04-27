@@ -10,7 +10,7 @@ export const DesktopNavRight = (props) => {
         <Search2Icon />
       </DesktopNavButton>
       {user ? null : (
-        <DesktopNavButton href="/login">로그인/가입</DesktopNavButton>
+        <DesktopNavButton href="/auth/login">로그인/가입</DesktopNavButton>
       )}
     </Stack>
   );

@@ -3,7 +3,7 @@ import Head from "next/head";
 import SeriesDetailEpisodeList from "../../src/components/Series/SeriesDetailEpisodeList";
 import SeriesDetailHeader from "../../src/components/Series/SeriesDetailHeader";
 import { MainLayout } from "../../src/layout/MainLayout";
-import { readEpisodesBySeries, readSeries } from "../../src/utils/api";
+import { readEpisodesBySeries, readSeries } from "../../src/utils/lib/api";
 
 const SeriesDetail = ({ series, episodes }) => {
   return (

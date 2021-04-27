@@ -200,7 +200,7 @@ export const MobileDrawerNavigation = (props) => {
             <>
               <Heading spacing={1}>나소미디어에 오신것을 환영합니다.</Heading>
               <Button
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/auth/login")}
                 colorScheme="purple"
                 variant="outline"
               >
