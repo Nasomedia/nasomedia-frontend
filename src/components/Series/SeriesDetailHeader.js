@@ -12,37 +12,37 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import { SeriesDetailThumbnailSkeleton } from "../ImageSkeleton";
 
-const AdSenseBannerSeriesDetail = () => {
-  useEffect(() => {
-    try {
-      if (typeof window !== "undefined") {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (e) {
-      console.error(e);
-      console.log("The user is using the adblock service.")
-    }
-  }, []);
-  return (
-    <>
-      <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638178136808231"
-          crossorigin="anonymous"
-        ></script>
-      </Head>
-      <ins
-        class="adsbygoogle"
-        style={{ display: "block", marginTop: "1.5rem" }}
-        data-ad-client="ca-pub-1638178136808231"
-        data-ad-slot="6458182040"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-    </>
-  );
-};
+// const AdSenseBannerSeriesDetail = () => {
+//   useEffect(() => {
+//     try {
+//       if (typeof window !== "undefined") {
+//         (window.adsbygoogle = window.adsbygoogle || []).push({});
+//       }
+//     } catch (e) {
+//       console.error(e);
+//       console.log("The user is using the adblock service.")
+//     }
+//   }, []);
+//   return (
+//     <>
+//       <Head>
+//         <script
+//           async
+//           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638178136808231"
+//           crossorigin="anonymous"
+//         ></script>
+//       </Head>
+//       <ins
+//         class="adsbygoogle"
+//         style={{ display: "block", marginTop: "1.5rem" }}
+//         data-ad-client="ca-pub-1638178136808231"
+//         data-ad-slot="6458182040"
+//         data-ad-format="auto"
+//         data-full-width-responsive="true"
+//       ></ins>
+//     </>
+//   );
+// };
 
 const SeriesDetailHeader = ({ series }) => {
   return (
@@ -112,7 +112,7 @@ const SeriesDetailHeader = ({ series }) => {
           <AccordionPanel py={2}>{series.description}</AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <AdSenseBannerSeriesDetail />
+      {/* <AdSenseBannerSeriesDetail /> */}
     </Box>
   );
 };

@@ -6,7 +6,7 @@ import theme from "../src/components/theme";
 import NProgress from "nprogress";
 import { SEO } from "../src/components/SEO";
 import { PWA } from "../src/components/PWA";
-import { AdSense } from "../src/components/AdSense";
+// import { AdSense } from "../src/components/AdSense";
 import { useEffect } from "react";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <SEO />
       <PWA />
-      <AdSense />
+      {/* <AdSense /> */}
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
