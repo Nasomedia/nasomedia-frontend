@@ -1,7 +1,7 @@
-import { BASE_URL } from "../../../constants";
+import { API_BASE_URL } from "../../../constants";
 import fetcher from "../fetch";
 
-const getURL = () => `${BASE_URL}/series`;
+const getURL = () => `${API_BASE_URL}/series`;
 
 export async function readSeries(id) {
   try {

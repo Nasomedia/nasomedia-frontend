@@ -1,8 +1,8 @@
 import axios from "axios";
-import { BASE_URL } from "../../constants";
+import { API_BASE_URL } from "../../constants";
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: API_BASE_URL,
   timeout: 100000,
 });
 instance.interceptors.request.use(

@@ -12,7 +12,7 @@ import Head from "next/head";
 import useSWR, { useSWRInfinite } from "swr";
 import fetcher from "../src/utils/lib/fetch";
 import { UpdateSeriesList } from "../src/components/SeriesList/UpdateSeriesList";
-import { BASE_URL } from "../src/constants";
+import { API_BASE_URL } from "../src/constants";
 import { MainLayout } from "../src/layout/MainLayout";
 import { readSeriesesByUpdate } from "../src/utils/lib/api";
 import { MdRefresh } from "react-icons/md";
@@ -22,7 +22,7 @@ const PAGE_SIZE = 20;
 
 const getKey = (pageIndex, previousPageData) => {
   if (previousPageData && !previousPageData.length) return null; // reached the end
-  return `${BASE_URL}/series/update?skip=${pageIndex}&limit=${PAGE_SIZE}`; // SWR key
+  return `${API_BASE_URL}/series/update?skip=${pageIndex}&limit=${PAGE_SIZE}`; // SWR key
 };
 
 export default function Updates({ initialUpdates }) {

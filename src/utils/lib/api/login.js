@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../../../constants";
+import { API_BASE_URL } from "../../../constants";
 import qs from "querystring";
 
 export const get_access_token = async (username, password) => {
@@ -8,7 +8,7 @@ export const get_access_token = async (username, password) => {
     username: username,
     password: password,
   };
-  const url = `${BASE_URL}/login/access-token`;
+  const url = `${API_BASE_URL}/login/access-token`;
   const options = {
     method: "POST",
     headers: { "content-type": "application/x-www-form-urlencoded" },
