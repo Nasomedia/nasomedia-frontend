@@ -1,9 +1,9 @@
 import { Stack, Heading, Box } from "@chakra-ui/layout";
 import Head from "next/head";
-import SeriesDetailEpisodeList from "../../src/components/Series/SeriesDetailEpisodeList";
-import SeriesDetailHeader from "../../src/components/Series/SeriesDetailHeader";
-import { MainLayout } from "../../src/layout/MainLayout";
-import { readEpisodesBySeries, readSeries } from "../../src/utils/lib/api";
+import SeriesDetailEpisodeList from "../../components/Series/SeriesDetailEpisodeList";
+import SeriesDetailHeader from "../../components/Series/SeriesDetailHeader";
+import { MainLayout } from "../../layout/MainLayout";
+import { readEpisodesBySeries, readSeries } from "../../lib/api";
 
 const SeriesDetail = ({ series, episodes }) => {
   return (

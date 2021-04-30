@@ -10,11 +10,11 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import useSWR, { useSWRInfinite } from "swr";
-import fetcher from "../src/utils/lib/fetch";
-import { UpdateSeriesList } from "../src/components/SeriesList/UpdateSeriesList";
-import { API_BASE_URL } from "../src/constants";
-import { MainLayout } from "../src/layout/MainLayout";
-import { readSeriesesByUpdate } from "../src/utils/lib/api";
+import fetcher from "../lib/fetch";
+import { UpdateSeriesList } from "../components/SeriesList/UpdateSeriesList";
+import { API_BASE_URL } from "../constants";
+import { MainLayout } from "../layout/MainLayout";
+import { readSeriesesByUpdate } from "../lib/api";
 import { MdRefresh } from "react-icons/md";
 import { useEffect } from "react";
 

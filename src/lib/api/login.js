@@ -1,5 +1,4 @@
-import axios from "axios";
-import { API_BASE_URL } from "../../../constants";
+import client from "../client";
 import qs from "querystring";
 
 export const get_access_token = async (username, password) => {
@@ -8,7 +7,7 @@ export const get_access_token = async (username, password) => {
     username: username,
     password: password,
   };
-  const url = `${API_BASE_URL}/login/access-token`;
+  const url = `/login/access-token`;
   const options = {
     method: "POST",
     headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -16,7 +15,7 @@ export const get_access_token = async (username, password) => {
     url,
   };
   try {
-    const res = await axios(options);
+    const res = await client(options);
     return res.data.access_token;
   } catch (e) {
     if (e.response.status === 400) {

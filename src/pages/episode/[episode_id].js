@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Viewer } from "../../src/layout/Viewer";
+import { Viewer } from "../../layout/Viewer";
 import {
   readEpisode,
   readEpisodeImages,
   readNextEpisode,
   readPrevEpisode,
   readSeries,
-} from "../../src/utils/lib/api";
-import { PRODUCTION_URL, ICON_URL } from "../../src/constants";
+} from "../../lib/api";
+import { PRODUCTION_URL, ICON_URL } from "../../constants";
 
 const EpisodeView = ({
   episode,

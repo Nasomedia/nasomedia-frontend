@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../../constants";
+import { API_BASE_URL } from "../../constants";
 import fetcher from "../fetch";
 
 const getURL = (id) => `${API_BASE_URL}/episode/${id}`;

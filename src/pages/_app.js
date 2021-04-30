@@ -2,11 +2,11 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 import Router from "next/router";
-import theme from "../src/components/theme";
+import theme from "../components/theme";
 import NProgress from "nprogress";
-import { SEO } from "../src/components/SEO";
-import { PWA } from "../src/components/PWA";
-// import { AdSense } from "../src/components/AdSense";
+import { SEO } from "../components/SEO";
+import { PWA } from "../components/PWA";
+// import { AdSense } from "../components/AdSense";
 import { useEffect } from "react";
 
 Router.events.on("routeChangeStart", () => NProgress.start());

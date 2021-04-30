@@ -1,8 +1,8 @@
 import { Stack, Heading, Box } from "@chakra-ui/layout";
 import Head from "next/head";
-import { MainLayout } from "../src/layout/MainLayout";
-import { TabSeriesList } from "../src/components/SeriesList";
-import { readSeriesesByUpdate } from "../src/utils/lib/api";
+import { MainLayout } from "../layout/MainLayout";
+import { TabSeriesList } from "../components/SeriesList";
+import { readSeriesesByUpdate } from "../lib/api";
 
 const index = ({ tabUpdates }) => {
   return (

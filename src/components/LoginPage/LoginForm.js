@@ -10,12 +10,13 @@ import {
 import * as React from "react";
 import { useRouter } from "next/router";
 import { PasswordField } from "./PasswordField";
-import { get_access_token } from "../../utils/lib/api/";
+import { get_access_token } from "../../lib/api/";
 
 export const LoginForm = (props) => {
   const [id, setId] = React.useState("");
   const [pw, setPw] = React.useState("");
   const [error, setError] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const toast = useToast();
   const router = useRouter();
@@ -32,6 +33,7 @@ export const LoginForm = (props) => {
     <chakra.form
       onSubmit={async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
         try {
           setError(false);
           const access_token = await get_access_token(id, pw);
@@ -58,6 +60,7 @@ export const LoginForm = (props) => {
             duration: 9000,
             isClosable: true,
           });
+          setIsSubmitting(false);
         }
       }}
       {...props}
@@ -74,7 +77,13 @@ export const LoginForm = (props) => {
           />
         </FormControl>
         <PasswordField onChange={onPw} isInvalid={error} />
-        <Button type="submit" colorScheme="purple" size="lg" fontSize="md">
+        <Button
+          type="submit"
+          isLoading={isSubmitting}
+          colorScheme="purple"
+          size="lg"
+          fontSize="md"
+        >
           로그인
         </Button>
       </Stack>

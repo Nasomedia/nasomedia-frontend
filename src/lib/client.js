@@ -1,11 +1,11 @@
 import axios from "axios";
-import { API_BASE_URL } from "../../constants";
+import { API_BASE_URL } from "../constants";
 
-const instance = axios.create({
+const client = axios.create({
   baseURL: API_BASE_URL,
   timeout: 100000,
 });
-instance.interceptors.request.use(
+client.interceptors.request.use(
   function (config) {
     return config;
   },
@@ -13,7 +13,7 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-instance.interceptors.response.use(
+client.interceptors.response.use(
   function (response) {
     return response;
   },
@@ -23,4 +23,4 @@ instance.interceptors.response.use(
   }
 );
 
-export default instance;
+export default client;
