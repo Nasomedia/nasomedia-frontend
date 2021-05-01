@@ -20,7 +20,7 @@ const LeftController = ({ onClick, isVisible }) => {
         top="60px"
         left={"0"}
         w={"25vw"}
-        h={"calc(100vh - 120px)"}
+        h={"calc(100% - 120px)"}
         animate={{ opacity: isVisible ? 1 : 0 }}
         zIndex="999"
         alignItems={"center"}
@@ -58,7 +58,7 @@ const RightController = ({ onClick, isVisible }) => {
         top="60px"
         right={"0"}
         w={"25vw"}
-        h={"calc(100vh - 120px)"}
+        h={"calc(100% - 120px)"}
         animate={{ opacity: isVisible ? 1 : 0 }}
         zIndex="999"
         alignItems={"center"}
@@ -93,9 +93,9 @@ const CenterController = ({ onClick }) => {
         as={"nav"}
         pos={"fixed"}
         top="60px"
-        right={"0"}
+        right={"25vw"}
         w={"50vw"}
-        h={"calc(100vh - 120px)"}
+        h={"calc(100% - 120px)"}
         zIndex="999"
         alignItems={"center"}
         justify={"center"}
