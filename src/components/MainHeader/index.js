@@ -18,9 +18,12 @@ import { MobileNav } from "./MobileNav";
 import { DesktopNavLeft } from "./DesktopNavLeft";
 import { DesktopNavRight } from "./DesktopNavRight";
 
+import useUser from "../../hooks/useUser";
+
 export const MainHeader = () => {
   const { isOpen: isMobileNavOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isLoggedIn, user, logout } = useUser();
   const onMobileNavToggle = onOpen;
   return (
     <Box>
@@ -100,26 +103,35 @@ export const MainHeader = () => {
             justify={"flex-end"}
           >
             <DesktopNavRight
-              user={null}
-              display={{ base: "none", md: "flex" }}
+              isLoggedIn={isLoggedIn}
+              user={user}
+              logout={logout}
             />
-            <IconButton
-              size={"sm"}
-              variant={"ghost"}
-              aria-label={"Toggle Color Mode"}
-              onClick={toggleColorMode}
-              icon={
-                colorMode == "light" ? (
-                  <IoMoon size={18} />
-                ) : (
-                  <IoSunny size={18} />
-                )
-              }
-            />
+            {!isLoggedIn ? (
+              <IconButton
+                size={"sm"}
+                variant={"ghost"}
+                aria-label={"Toggle Color Mode"}
+                onClick={toggleColorMode}
+                icon={
+                  colorMode == "light" ? (
+                    <IoMoon size={18} />
+                  ) : (
+                    <IoSunny size={18} />
+                  )
+                }
+              />
+            ) : null}
           </Stack>
         </Container>
       </Flex>
-      <MobileNav isOpen={isMobileNavOpen} onClose={onClose} />
+      <MobileNav
+        isLoggedIn={isLoggedIn}
+        user={user}
+        logout={logout}
+        isOpen={isMobileNavOpen}
+        onClose={onClose}
+      />
     </Box>
   );
 };

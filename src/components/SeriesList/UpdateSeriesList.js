@@ -50,9 +50,6 @@ const ListBox = ({ imageURL, title, id }) => {
 
 export const UpdateSeriesList = (props) => {
   const { updates } = props;
-  useEffect(() => {
-    console.log(updates);
-  }, [updates]);
   return (
     <Wrap
       flexWrap={"wrap"}

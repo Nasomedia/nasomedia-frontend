@@ -1,15 +1,23 @@
 import { Search2Icon } from "@chakra-ui/icons";
 import { Stack, useColorModeValue } from "@chakra-ui/react";
-import DesktopNavButton from "./DesktopNavButton";
 
-export const DesktopNavRight = (props) => {
-  const user = null;
+import DesktopNavButton from "./DesktopNavButton";
+import { DesktopUserMenu } from "./DesktopUserMenu";
+
+export const DesktopNavRight = ({ isLoggedIn, user, logout }) => {
   return (
-    <Stack direction={"row"} spacing={4} {...props}>
+    <Stack
+      display={{ base: "none", md: "flex" }}
+      alignItems={"center"}
+      direction={"row"}
+      spacing={4}
+    >
       <DesktopNavButton href={"/search"}>
         <Search2Icon />
       </DesktopNavButton>
-      {user ? null : (
+      {isLoggedIn ? (
+        <DesktopUserMenu user={user} logout={logout} />
+      ) : (
         <DesktopNavButton href="/auth/login">로그인/가입</DesktopNavButton>
       )}
     </Stack>

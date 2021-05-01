@@ -11,6 +11,7 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { PasswordField } from "./PasswordField";
 import { get_access_token } from "../../lib/api/";
+import { setToken } from "../../lib/setToken";
 
 export const LoginForm = (props) => {
   const [id, setId] = React.useState("");
@@ -44,6 +45,7 @@ export const LoginForm = (props) => {
             isClosable: true,
           });
           if (access_token) {
+            setToken(access_token);
             router.push("/");
             //   history.back();
           }

@@ -135,7 +135,7 @@ const AppInstallButton = ({ children }) => {
 };
 */
 
-const MobileDrawerLinks = ({ user }) => {
+const MobileDrawerLinks = ({ isLoggedIn, user, logout, router }) => {
   const { asPath } = useRouter();
   return (
     <Stack
@@ -147,7 +147,7 @@ const MobileDrawerLinks = ({ user }) => {
       // {...props}
     >
       <Stack>
-        {user ? (
+        {isLoggedIn ? (
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
             <Divider />
@@ -157,10 +157,20 @@ const MobileDrawerLinks = ({ user }) => {
             <NavigationLink asPath={asPath} href={`/setting`}>
               설정
             </NavigationLink>
-            <NavigationLink asPath={asPath} href={`/logout`}>
-              로그아웃
-            </NavigationLink>
             <Divider />
+            <Button
+              fontSize={"sm"}
+              rounded={"md"}
+              fontWeight={400}
+              color={useColorModeValue("gray.700", "gray.400")}
+              onClick={() => {
+                router.push("/");
+                logout();
+              }}
+            >
+              로그아웃
+            </Button>
+            {/* <Divider /> */}
             {/* <AppInstallButton>앱 설치하기</AppInstallButton> */}
           </Stack>
         ) : (
@@ -175,9 +185,7 @@ const MobileDrawerLinks = ({ user }) => {
   );
 };
 
-export const MobileDrawerNavigation = (props) => {
-  // const user = { nickname: "Naso" };
-  const user = null;
+export const MobileDrawerNavigation = ({ isLoggedIn, user, logout }) => {
   const router = useRouter();
 
   return (
@@ -185,9 +193,12 @@ export const MobileDrawerNavigation = (props) => {
       <DrawerHeader>
         <Stack spacing={6} w={"full"} flexShrink={0}>
           <DrawerCloseButton />
-          {user ? (
+          {isLoggedIn ? (
             <>
-              <Heading spacing={1}>{user.nickname}님, 환영합니다!</Heading>
+              <Heading spacing={1}>
+                {user.full_name}님,
+                <br /> 환영합니다!
+              </Heading>
               <Button
                 onClick={() => router.push("/notifications")}
                 colorScheme="purple"
@@ -198,7 +209,11 @@ export const MobileDrawerNavigation = (props) => {
             </>
           ) : (
             <>
-              <Heading spacing={1}>나소미디어에 오신것을 환영합니다.</Heading>
+              <Heading spacing={1}>
+                나소미디어에
+                <br />
+                오신것을 환영합니다.
+              </Heading>
               <Button
                 onClick={() => router.push("/auth/login")}
                 colorScheme="purple"
@@ -211,7 +226,12 @@ export const MobileDrawerNavigation = (props) => {
         </Stack>
       </DrawerHeader>
       <DrawerBody>
-        <MobileDrawerLinks user={user} />
+        <MobileDrawerLinks
+          router={router}
+          isLoggedIn={isLoggedIn}
+          user={user}
+          logout={logout}
+        />
       </DrawerBody>
     </DrawerContent>
   );

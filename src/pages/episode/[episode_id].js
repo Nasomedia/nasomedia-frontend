@@ -42,6 +42,7 @@ const EpisodeView = ({
 export async function getServerSideProps(context) {
   const { episode_id } = context.query;
   const episode = await readEpisode(episode_id);
+  if (episode === null) return { notFound: true };
   const series = await readSeries(episode.series_id);
   const images = await readEpisodeImages(episode_id);
   const nextEpisode = await readNextEpisode(episode_id);
