@@ -22,7 +22,7 @@ export default function Login() {
   return (
     <Box
       bg={useColorModeValue("gray.50", "inherit")}
-      minH="100vh"
+      minH="100%"
       py="24"
       px={{ base: "4", lg: "8" }}
     >
