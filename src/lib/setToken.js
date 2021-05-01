@@ -1,29 +1,24 @@
 import axios from "axios";
 import cookie from "react-cookies";
 
+import * as cookies from "cookie";
+
 function setToken(token) {
   axios.defaults.headers.Authorization = "Bearer " + token;
 
-  const expires = new Date();
-  expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 1); // 1 days
+  const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 1); // 1 days
 
-  cookie.save("token", token, {
-    path: "/",
-    expires,
-    httpOnly: process.env.NODE_ENV === "production" ? true : false,
-  });
+  if (typeof document === "object" && typeof document.cookie === "string") {
+    document.cookie = `token=${token}; expires=${expires.toUTCString()} SameSite=Lax`;
+  }
 }
 
 function removeToken() {
   axios.defaults.headers.Authorization = undefined;
 
-  const expires = new Date();
-  expires.setDate(Date.now() - 1000); // -1
-
-  cookie.remove("token", {
-    path: "/",
-    httpOnly: process.env.NODE_ENV === "production" ? true : false,
-  });
+  if (typeof document === "object" && typeof document.cookie === "string") {
+    document.cookie = "token=; max-age=-1";
+  }
 }
 
 export { setToken, removeToken };
