@@ -88,3 +88,7 @@ export default function Search() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  return { props: {} };
+}
