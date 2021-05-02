@@ -120,7 +120,6 @@ export const PageController = ({
     }
     if (length === pageIndex + 1) {
       if (!toast.isActive(lastIndex)) {
-        console.log("testtoast2");
         toast({
           id: lastIndex,
           title: "마지막 페이지입니다.",
@@ -138,7 +137,6 @@ export const PageController = ({
     }
     if (pageIndex === 0) {
       if (!toast.isActive(firstIndex)) {
-        console.log("testtoast1");
         toast({
           id: firstIndex,
           title: "첫번째 페이지입니다.",
