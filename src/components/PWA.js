@@ -6,13 +6,26 @@ export const PWA = () => {
       <link href="/manifest.json" rel="manifest" />
       <meta name="theme-color" content="purple" />
       <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-title" content="나소미디어" />
+      <meta name="application-name" content="나소미디어" />
+      <meta name="apple-mobile-web-app-title" content="NASOMEDIA" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
       <meta name="msapplication-navbutton-color" content="purple" />
       <meta name="msapplication-starturl" content="/" />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/icons/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/icons/favicon-16x16.png"
+      />
       <link
         rel="apple-touch-icon"
         sizes="57x57"
