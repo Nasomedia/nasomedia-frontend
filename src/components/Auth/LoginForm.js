@@ -10,7 +10,7 @@ import {
 import * as React from "react";
 import { useRouter } from "next/router";
 import { PasswordField } from "./PasswordField";
-import { get_access_token } from "../../lib/api/";
+import { get_access_token } from "../../lib/api";
 import { setToken } from "../../lib/setToken";
 
 export const LoginForm = (props) => {
@@ -68,7 +68,7 @@ export const LoginForm = (props) => {
       {...props}
     >
       <Stack spacing="6">
-        <FormControl id="email">
+        <FormControl isRequired id="email">
           <FormLabel>이메일</FormLabel>
           <Input
             name="email"

@@ -85,7 +85,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 export const PasswordField = React.forwardRef((props, ref) => {
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = React.useRef(null);
-
+  const { onChange, isInvalid, isConfirm, isSignup } = props;
   const mergeRef = useMergeRefs(inputRef, ref);
 
   const onClickReveal = () => {
@@ -101,9 +101,9 @@ export const PasswordField = React.forwardRef((props, ref) => {
   };
 
   return (
-    <FormControl id="password">
+    <FormControl isRequired id="password">
       <Flex justify="space-between">
-        <FormLabel>비밀번호</FormLabel>
+        <FormLabel>{isConfirm ? "비밀번호 확인" : "비밀번호"}</FormLabel>
         {/* <Box
           as="a"
           color={mode("blue.600", "blue.200")}
@@ -125,11 +125,12 @@ export const PasswordField = React.forwardRef((props, ref) => {
         </InputRightElement>
         <Input
           ref={mergeRef}
-          name="password"
+          name={!isConfirm ? "password" : "confirmPassword"}
           type={isOpen ? "text" : "password"}
-          autoComplete="current-password"
+          autoComplete={isSignup ? "new-password" : "current-password"}
           required
-          {...props}
+          onChange={onChange}
+          isInvalid={isInvalid}
         />
       </InputGroup>
     </FormControl>

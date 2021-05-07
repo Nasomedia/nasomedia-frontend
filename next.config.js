@@ -9,4 +9,30 @@ module.exports = withPWA({
     sw: "service-worker.js",
     runtimeCaching,
   },
+  async redirects() {
+    return [
+      {
+        source: "/auth/login",
+        destination: "/",
+        // has: [
+        //   {
+        //     type: "cookie",
+        //     key: "token",
+        //   },
+        // ],
+        permanent: false,
+      },
+      {
+        source: "/auth/signup",
+        destination: "/",
+        // has: [
+        //   {
+        //     type: "cookie",
+        //     key: "token",
+        //   },
+        // ],
+        permanent: false,
+      },
+    ];
+  },
 });

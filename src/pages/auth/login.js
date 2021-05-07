@@ -8,15 +8,15 @@ import {
   Img,
   useColorModeValue,
   VisuallyHidden,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import * as React from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import {
-  Card,
-  DividerWithText,
-  Link,
-  LoginForm,
-} from "../../components/LoginPage";
+import { Card, DividerWithText, Link, LoginForm } from "../../components/Auth";
+import cookies from "next-cookies";
+
 
 export default function Login() {
   return (
@@ -27,28 +27,42 @@ export default function Login() {
       px={{ base: "4", lg: "8" }}
     >
       <Box maxW="md" mx="auto">
-        <Center mx="auto" h="8" mb={{ base: "10", md: "20" }}>
+        <LinkBox
+          _hover={{ cursor: "pointer" }}
+          as={Center}
+          mx="auto"
+          h="8"
+          mb={{ base: "10", md: "20" }}
+        >
           <Img
             src="/icons/nasoicon.svg"
             alt="logo"
             w={{ base: 10 }}
             h={{ base: 10 }}
           />
-          <Heading
-            ml={4}
-            as={"h3"}
-            textAlign="center"
-            size="lg"
-            fontWeight="bold"
-          >
-            나소미디어
-          </Heading>
-        </Center>
-        <Heading textAlign="center" size="xl" fontWeight="extrabold">
+          <NextLink href={"/"} passHref>
+            <LinkOverlay
+              as={Heading}
+              ml={4}
+              as={"h3"}
+              textAlign="center"
+              size="lg"
+              fontSize={"x-large"}
+              fontWeight="bold"
+            >
+              나소미디어
+            </LinkOverlay>
+          </NextLink>
+        </LinkBox>
+        <Heading textAlign="center" size="xl" fontWeight="bold">
           로그인
         </Heading>
         <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-          <Link href="#">이메일로 가입하기(현재 지원하지 않습니다)</Link>
+          <NextLink href="/auth/signup" passHref>
+            <Link href="/auth/signup">
+              이메일로 가입하기
+            </Link>
+          </NextLink>
         </Text>
         <Card>
           <LoginForm />

@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import cookies from "next-cookies";
 import { setToken } from "../lib/setToken";
 import useUser from "../hooks/useUser";
-import { read_user_me } from "../lib/api/users";
+import { read_user_me } from "../lib/api";
 import { wrapper } from "../store";
 import { loginAction } from "../slices/user";
 

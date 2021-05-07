@@ -9,7 +9,7 @@ function setToken(token) {
   const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 1); // 1 days
 
   if (typeof document === "object" && typeof document.cookie === "string") {
-    document.cookie = `token=${token}; expires=${expires.toUTCString()} SameSite=Lax`;
+    document.cookie = `token=${token}; path=/; expires=${expires.toUTCString()} SameSite=Lax`;
   }
 }
 
@@ -17,7 +17,7 @@ function removeToken() {
   axios.defaults.headers.Authorization = undefined;
 
   if (typeof document === "object" && typeof document.cookie === "string") {
-    document.cookie = "token=; max-age=-1";
+    document.cookie = "token=; path=/; max-age=-1 SameSite=Lax";
   }
 }
 
