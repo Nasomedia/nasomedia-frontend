@@ -28,7 +28,7 @@ const styles = {
       overflowY: "scroll", // Always show scrollbar to avoid flickering
     },
     html: {
-      scrollBehavior: "smooth",
+      // scrollBehavior: "smooth",
     },
     "#nprogress": {
       pointerEvents: "none",
