@@ -10,7 +10,7 @@ import { PWA } from "../components/PWA";
 // import { AdSense } from "../components/AdSense";
 import { useEffect } from "react";
 import cookies from "next-cookies";
-import { setToken } from "../lib/setToken";
+import { setToken, removeToken } from "../lib/setToken";
 import useUser from "../hooks/useUser";
 import { read_user_me } from "../lib/api";
 import { wrapper } from "../store";
@@ -59,20 +59,33 @@ function MyApp({ Component, pageProps }) {
 }
 
 MyApp.getInitialProps = async (appContext) => {
+  function setIsAuthCookie(bool) {
+    if (ctx.res) {
+      ctx.res.setHeader("Set-Cookie", `authorized=${bool}; path=/;`);
+    }
+    if (typeof document === "object" && typeof document.cookie === "string") {
+      document.cookie = `authorized=${bool}; path=/;`;
+    }
+  }
   const appProps = await App.getInitialProps(appContext);
   const { ctx } = appContext; // next에서 넣어주는 context
   const state = ctx.store.getState(); // state 불러오기
   const cookie = ctx.isServer ? ctx.req.headers.cookie : "";
 
-  let pageProps = {};
   const allCookies = cookies(ctx);
   const tokenByCookie = allCookies["token"];
   if (tokenByCookie !== undefined && tokenByCookie !== "") {
     setToken(tokenByCookie);
     const user = await read_user_me();
     if (!state.user.isLoggedIn) {
+      setIsAuthCookie(true);
       ctx.store.dispatch(loginAction(user));
+    } else {
+      removeToken();
+      setIsAuthCookie(false);
     }
+  } else {
+    setIsAuthCookie(false);
   }
   return { ...appProps };
 };

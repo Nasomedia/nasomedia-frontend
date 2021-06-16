@@ -12,25 +12,15 @@ module.exports = withPWA({
   async redirects() {
     return [
       {
-        source: "/auth/login",
+        source: "/auth/:slug*",
         destination: "/",
-        // has: [
-        //   {
-        //     type: "cookie",
-        //     key: "token",
-        //   },
-        // ],
-        permanent: false,
-      },
-      {
-        source: "/auth/signup",
-        destination: "/",
-        // has: [
-        //   {
-        //     type: "cookie",
-        //     key: "token",
-        //   },
-        // ],
+        has: [
+          {
+            type: "cookie",
+            key: "authorized",
+            value: "true"
+          },
+        ],
         permanent: false,
       },
     ];

@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import { useState } from "react";
 import { TabListImageSkeleton } from "../ImageSkeleton";
+import CommingSoon from "../CommingSoon";
 
 const TabSeriesListTabs = ({ index }) => {
   const hrefs = ["update", "ranking", "ranking?type=new"];
@@ -112,17 +113,11 @@ const TabSeriesListTabPanels = ({ updates }) => {
       </TabPanel>
       <TabPanel>
         <Text>랭킹</Text>
-        <Center flexDirection={"column"}>
-          <Img mt={4} src={"/error_black.png"} />
-          <Text mt={8}>아직 준비중입니다.</Text>
-        </Center>
+        <CommingSoon />
       </TabPanel>
       <TabPanel>
         <Text>신작</Text>
-        <Center flexDirection={"column"}>
-          <Img mt={4} src={"/error_black.png"} />
-          <Text mt={8}>아직 준비중입니다.</Text>
-        </Center>
+        <CommingSoon />
       </TabPanel>
     </TabPanels>
   );

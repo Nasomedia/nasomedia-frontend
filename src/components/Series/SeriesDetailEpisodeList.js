@@ -33,6 +33,7 @@ const EpisodeListBox = ({ episode }) => {
         "linear-gradient(145deg, #171d28, #1c222f)"
       )}
       w={"full"}
+      h={{ base: "28", md: "32" }}
       borderRadius={"md"}
       boxShadow={useColorModeValue(
         "6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff",
@@ -55,7 +56,7 @@ const EpisodeListBox = ({ episode }) => {
     >
       <Image
         w={"28"}
-        h={"32"}
+        h={{ base: "28", md: "32" }}
         objectFit={"cover"}
         fallback={<DetailEpisodeThumbnailSkeleton />}
         borderLeftRadius={"md"}

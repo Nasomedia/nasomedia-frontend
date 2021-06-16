@@ -51,15 +51,19 @@ export default function Updates({ initialUpdates }) {
   return (
     <MainLayout>
       <Head>
-        <title>업데이트 - 나소미디어</title>
+        <title>업데이트 | 나소미디어</title>
       </Head>
       <Stack spacing={6}>
         <Heading>업데이트</Heading>
-        <Flex alignItems={"center"}>
+        <Flex
+          alignItems={"center"}
+          flexDirection={{ base: "column", md: "row" }}
+        >
           <Text>실시간으로 업데이트 되는 목록들!</Text>
           <Spacer />
           <Button
             isLoading={isRefreshing}
+            mt={{ base: "4", md: null }}
             loadingText={"새로고침중..."}
             colorScheme={"purple"}
             variant={"outline"}

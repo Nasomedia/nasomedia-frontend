@@ -50,7 +50,7 @@ export const MainHeader = () => {
             ml={{ base: -2 }}
             display={{ base: "flex", md: "none" }}
           >
-            <IconButton
+            {/* <IconButton
               onClick={onMobileNavToggle}
               icon={
                 isMobileNavOpen ? (
@@ -62,7 +62,7 @@ export const MainHeader = () => {
               variant={"ghost"}
               size={"sm"}
               aria-label={"Toggle Navigation"}
-            />
+            /> */}
           </Flex>
 
           <Flex
@@ -107,12 +107,27 @@ export const MainHeader = () => {
               user={user}
               logout={logout}
             />
+            <IconButton
+              onClick={onMobileNavToggle}
+              display={{ base: "flex", md: "none" }}
+              icon={
+                isMobileNavOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              size={"sm"}
+              aria-label={"Toggle Navigation"}
+            />
             {!isLoggedIn ? (
               <IconButton
                 size={"sm"}
                 variant={"ghost"}
                 aria-label={"Toggle Color Mode"}
                 onClick={toggleColorMode}
+                display={{ base: "none", md: "flex" }}
                 icon={
                   colorMode == "light" ? (
                     <IoMoon size={18} />

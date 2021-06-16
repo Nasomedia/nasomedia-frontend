@@ -58,7 +58,6 @@ export const SignupForm = (props) => {
             isClosable: true,
           });
           const access_token = await get_access_token(id, pw);
-          console.log(access_token);
           if (access_token) {
             setToken(access_token);
             router.push("/");

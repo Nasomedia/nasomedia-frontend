@@ -3,7 +3,7 @@ import { MobileDrawerNavigation } from "./MobileDrawerNavigation";
 
 export const MobileNav = ({ isOpen, onClose, isLoggedIn, user, logout }) => {
   return (
-    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
       <DrawerOverlay>
         <MobileDrawerNavigation
           isLoggedIn={isLoggedIn}

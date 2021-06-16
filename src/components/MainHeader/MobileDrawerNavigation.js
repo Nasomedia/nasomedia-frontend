@@ -1,6 +1,8 @@
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import {
+  Flex,
+  Spacer,
   Link,
   Stack,
   useColorModeValue,
@@ -11,8 +13,36 @@ import {
   Heading,
   Button,
   Divider,
+  useColorMode,
 } from "@chakra-ui/react";
+import { IoMoon, IoSunny } from "react-icons/io5";
 import { useEffect } from "react";
+
+const ColorModeButton = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return (
+    <Flex
+      fontSize={"sm"}
+      rounded={"md"}
+      px={3}
+      py={2}
+      ml={"-12px!important"}
+      fontWeight={400}
+      color={useColorModeValue("gray.700", "gray.400")}
+      _hover={{
+        bg: useColorModeValue("gray.100", "gray.900"),
+        cursor: "pointer",
+      }}
+      onClick={() => toggleColorMode()}
+      alignItems={"center"}
+    >
+      테마
+      <Spacer />
+      {colorMode == "light" ? <IoMoon size={12} /> : <IoSunny size={12} />}
+    </Flex>
+  );
+};
 
 const NavigationLink = ({ href, children, asPath }) => {
   const isActive = asPath === href;
@@ -151,12 +181,13 @@ const MobileDrawerLinks = ({ isLoggedIn, user, logout, router }) => {
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
             <Divider />
-            <NavigationLink asPath={asPath} href={`/user/me`}>
+            <NavigationLink asPath={asPath} href={`/user/me/inbox`}>
               내 보관함
             </NavigationLink>
-            <NavigationLink asPath={asPath} href={`/setting`}>
+            <NavigationLink asPath={asPath} href={`/settings`}>
               설정
             </NavigationLink>
+            <ColorModeButton />
             <Divider />
             <Button
               fontSize={"sm"}
@@ -177,6 +208,7 @@ const MobileDrawerLinks = ({ isLoggedIn, user, logout, router }) => {
           <Stack spacing={1}>
             <DrawerPublicLinks asPath={asPath} />
             <Divider />
+            <ColorModeButton />
             {/* <AppInstallButton>앱 설치하기</AppInstallButton> */}
           </Stack>
         )}

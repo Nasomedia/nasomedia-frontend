@@ -29,8 +29,22 @@ export const DesktopUserMenu = ({ user, logout }) => {
             {user.full_name} <ChevronDownIcon top={-1} />
           </MenuButton>
           <MenuList>
-            <MenuItem fontSize={"sm"}>내 보관함</MenuItem>
-            <MenuItem fontSize={"sm"}>설정</MenuItem>
+            <MenuItem
+              fontSize={"sm"}
+              onClick={() => {
+                router.push("/user/me/inbox");
+              }}
+            >
+              내 보관함
+            </MenuItem>
+            <MenuItem
+              fontSize={"sm"}
+              onClick={() => {
+                router.push("/settings");
+              }}
+            >
+              설정
+            </MenuItem>
             <MenuDivider />
             <MenuItem
               fontSize={"sm"}

@@ -18,7 +18,7 @@ export const get_access_token = async (username, password) => {
     const res = await client(options);
     return res.data.access_token;
   } catch (e) {
-    if (e.response.status === 400) {
+    if (e.response.status >= 400) {
       throw new Error(e.response.data.detail);
     }
   }
