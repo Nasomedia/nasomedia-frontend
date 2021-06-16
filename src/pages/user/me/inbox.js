@@ -3,7 +3,7 @@ import Head from "next/head";
 import { MainLayout } from "../../../layout/MainLayout";
 import CommingSoon from "../../../components/CommingSoon";
 
-export default function Me() {
+export default function Inbox() {
   return (
     <MainLayout>
       <Head>
