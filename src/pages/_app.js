@@ -78,10 +78,9 @@ MyApp.getInitialProps = async (appContext) => {
     setToken(tokenByCookie);
     const user = await read_user_me();
     if (!state.user.isLoggedIn) {
-      setIsAuthCookie(true);
       ctx.store.dispatch(loginAction(user));
+      setIsAuthCookie(true);
     } else {
-      removeToken();
       setIsAuthCookie(false);
     }
   } else {
