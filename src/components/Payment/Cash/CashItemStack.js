@@ -44,6 +44,7 @@ const CashItemStack = ({ value, setValue }) => {
           divider={
             <StackDivider width={"calc(100% - 24px)"} alignSelf={"center"} />
           }
+          spacing={'3.5'}
           alignItems={"start"}
         >
           {amountList.map((amount) => (
