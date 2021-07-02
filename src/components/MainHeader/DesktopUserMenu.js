@@ -49,8 +49,8 @@ export const DesktopUserMenu = ({ user, logout }) => {
             <MenuItem
               fontSize={"sm"}
               onClick={() => {
-                router.push("/");
                 logout();
+                router.push("/");
               }}
             >
               로그아웃

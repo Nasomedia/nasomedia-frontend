@@ -195,8 +195,8 @@ const MobileDrawerLinks = ({ isLoggedIn, user, logout, router }) => {
               fontWeight={400}
               color={useColorModeValue("gray.700", "gray.400")}
               onClick={() => {
-                router.push("/");
                 logout();
+                router.push("/");
               }}
             >
               로그아웃

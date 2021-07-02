@@ -10,6 +10,7 @@ import {
 import * as React from "react";
 import { useRouter } from "next/router";
 import { PasswordField } from "./PasswordField";
+import useUser from "../../hooks/useUser";
 import { get_access_token } from "../../lib/api";
 import { setToken } from "../../lib/setToken";
 
@@ -22,10 +23,12 @@ export const LoginForm = (props) => {
   const toast = useToast();
   const router = useRouter();
 
+  const { login_has_token } = useUser();
+
   const onId = (e) => {
     setId(e.target.value);
   };
-  
+
   const onPw = (e) => {
     setPw(e.target.value);
     if (error) setError(false);
@@ -46,6 +49,7 @@ export const LoginForm = (props) => {
           });
           if (access_token) {
             setToken(access_token);
+            login_has_token();
             router.push("/");
             //   history.back();
           }

@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { read_user_me } from "../lib/api";
 import { removeToken } from "../lib/setToken";
 import { loginAction, logoutAction } from "../slices/user";
 
@@ -16,5 +17,10 @@ export default function useUser() {
     dispatch(logoutAction());
   }, []);
 
-  return { isLoggedIn, user, login, logout };
+  const login_has_token = useCallback(async () => {
+    const userData = await read_user_me();
+    login(userData);
+  });
+
+  return { isLoggedIn, user, login, login_has_token, logout };
 }
