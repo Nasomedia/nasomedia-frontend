@@ -51,7 +51,7 @@ export const ViewerFooter = ({
                 <IconButton
                   variant="outline"
                   onClick={() => {
-                    router.push(`/episode/${prevEpisodeID}`);
+                    router.push(`/episodes/${prevEpisodeID}`);
                   }}
                   colorScheme={prevEpisodeID ? "purple" : "gray"}
                   borderRadius={"full"}
@@ -62,7 +62,7 @@ export const ViewerFooter = ({
                 <IconButton
                   variant="outline"
                   onClick={() => {
-                    router.push(`/episode/${nextEpisodeID}`);
+                    router.push(`/episodes/${nextEpisodeID}`);
                   }}
                   colorScheme={nextEpisodeID ? "purple" : "gray"}
                   borderRadius={"full"}

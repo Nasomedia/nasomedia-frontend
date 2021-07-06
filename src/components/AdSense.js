@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 export const AdSense = () => {
   const router = useRouter();
-  const isAds = router.asPath.includes("episode") ? false : true;
+  const isAds = router.asPath.includes("episodes") ? false : true;
   return isAds ? (
     <Head>
       <script

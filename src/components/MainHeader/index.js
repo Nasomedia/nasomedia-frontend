@@ -103,7 +103,6 @@ export const MainHeader = () => {
             justify={"flex-end"}
           >
             <DesktopNavRight
-              isLoggedIn={isLoggedIn}
               user={user}
               logout={logout}
             />

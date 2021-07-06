@@ -9,12 +9,25 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import React from "react";
-import CashItemStack from "../../components/Payment/Cash/CashItemStack";
+import usePayment from "../../hooks/usePayment";
+import { CashDepositStepGroup } from "../../components/Payment/CashDeposit";
 import { MainLayout } from "../../layout/MainLayout";
 
-const SeriesDetail = () => {
-  const [step, setStep] = React.useState(0);
-  const [value, setValue] = React.useState(0);
+const CashDepositPage = () => {
+  const {
+    set,
+    amount,
+    setAmount,
+    method,
+    setMethod,
+    orderName,
+    setOrderName,
+    orderId,
+    customerName,
+    failUrl,
+    successUrl,
+    setUrl,
+  } = usePayment();
   return (
     <MainLayout>
       <Head>
@@ -31,32 +44,16 @@ const SeriesDetail = () => {
             mt={"0.5rem!important"}
             mb={"2rem!important"}
           />
-          <SlideFade in={step === 0} offsetY="20px">
-            <CashItemStack setValue={setValue} value={value} />
-          </SlideFade>
-          <SlideFade in={step === 1} offsetY="20px"></SlideFade>
-          <ButtonGroup variant="outline" spacing="12">
-            {step > 0 && (
-              <Button colorScheme="gray" onClick={() => setStep(0)}>
-                이전
-              </Button>
-            )}
-            <Button
-              colorScheme="purple"
-              variant={step === 1 ? "solid" : "outline"}
-              onClick={() => {
-                if (step === 1) {
-                } else {
-                  setStep(1);
-                }
-              }}
-            >
-              {step === 1 ? "결제하기" : "다음"}
-            </Button>
-          </ButtonGroup>
+          <CashDepositStepGroup
+            amount={amount}
+            setAmount={setAmount}
+            method={method}
+            setMethod={setMethod}
+          ></CashDepositStepGroup>
         </VStack>
       </Container>
     </MainLayout>
   );
 };
-export default SeriesDetail;
+
+export default CashDepositPage;

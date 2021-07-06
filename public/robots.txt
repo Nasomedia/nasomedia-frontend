@@ -3,4 +3,5 @@ Allow: /
 Disallow: /auth/
 Disallow: /policy/
 Disallow: /user/
-Disallow: /episode/
+Disallow: /episodes/
+Disallow: /payment/

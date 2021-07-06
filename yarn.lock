@@ -1763,17 +1763,17 @@
     ejs "^2.6.1"
     magic-string "^0.25.0"
 
-"@tosspayments/sdk-types@^1.1.3":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@tosspayments/sdk-types/-/sdk-types-1.1.4.tgz#5bbd5cd4fb4a60215dda9e13886ef61a4e74c802"
-  integrity sha512-Ycnkm9WUjkX59QmSNAxu3tVrQbeA9cLK+mLRYk/ZjLgF1Q6CvTBSXhfJWUlP/BbyXJ1/Z4hMEF9urg43Cf5H0w==
+"@tosspayments/sdk-types@^1.1.4":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@tosspayments/sdk-types/-/sdk-types-1.1.5.tgz#c02adb4ebee963c9ce966c7c0f2b978221d07a15"
+  integrity sha512-KOadkCASWoKilx3piGAyn51012A7/pRt0pTniD3EXVT4N/MTNksdJPavUO7ZIEaxSS1XQutHQ/Xpnxcu13cxZw==
 
-"@tosspayments/sdk@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@tosspayments/sdk/-/sdk-1.1.4.tgz#e70828111bf6cf5824b053aec51b03faf6eb4c8c"
-  integrity sha512-DgiRAJeiU2UhK/2zZmbHoqFK2qHzJIF2PM8S2Kzgq7Utl8FNfqbWdh6irSgrKy/Ra1QA1pFIqY94kiOIODEe1w==
+"@tosspayments/sdk@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@tosspayments/sdk/-/sdk-1.2.0.tgz#7c690b3bcff488405b1c0421cd018614815404b1"
+  integrity sha512-Efccxa0FJLF7NduidL+M+7dasf8XIesX3IpcnKr4J53/XkamDb86/hntoHLHlT+W+7QMERPnw3RBKP7rrI9B7w==
   dependencies:
-    "@tosspayments/sdk-types" "^1.1.3"
+    "@tosspayments/sdk-types" "^1.1.4"
 
 "@types/body-parser@*":
   version "1.19.0"

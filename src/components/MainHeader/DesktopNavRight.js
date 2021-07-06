@@ -4,7 +4,11 @@ import { Stack, useColorModeValue } from "@chakra-ui/react";
 import DesktopNavButton from "./DesktopNavButton";
 import { DesktopUserMenu } from "./DesktopUserMenu";
 
-export const DesktopNavRight = ({ isLoggedIn, user, logout }) => {
+import useUser from "../../hooks/useUser";
+
+export const DesktopNavRight = ({ user, logout }) => {
+  const { isLoggedIn } = useUser();
+
   return (
     <Stack
       display={{ base: "none", md: "flex" }}

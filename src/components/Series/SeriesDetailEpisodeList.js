@@ -70,7 +70,7 @@ const EpisodeListBox = ({ episode }) => {
           justifyContent={"center"}
           flexDirection={"column"}
         >
-          <NextLink href={`/episode/${episode.id}`} passHref>
+          <NextLink href={`/episodes/${episode.id}`} passHref>
             <LinkOverlay>{episode.title}</LinkOverlay>
           </NextLink>
           <Text
