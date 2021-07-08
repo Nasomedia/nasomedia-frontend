@@ -48,6 +48,7 @@ export const SignupForm = (props) => {
         setIsSubmitting(true);
         try {
           setError(false);
+          if (name.length > 13) throw new Error("이름이 너무 깁니다");
           if (pw !== confirmPw)
             throw new Error("비밀번호가 일치하지 않습니다.");
           const user = await create_user_open(pw, id, name);
