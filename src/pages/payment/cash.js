@@ -12,8 +12,9 @@ import React from "react";
 import usePayment from "../../hooks/usePayment";
 import { CashDepositStepGroup } from "../../components/Payment/CashDeposit";
 import { MainLayout } from "../../layout/MainLayout";
+import { readMyCash } from "../../lib/api/cash";
 
-const CashDepositPage = () => {
+const CashDepositPage = ({ cashInfo }) => {
   const {
     set,
     amount,
@@ -23,10 +24,6 @@ const CashDepositPage = () => {
     orderName,
     setOrderName,
     orderId,
-    customerName,
-    failUrl,
-    successUrl,
-    setUrl,
   } = usePayment();
   return (
     <MainLayout>
@@ -49,6 +46,7 @@ const CashDepositPage = () => {
             setAmount={setAmount}
             method={method}
             setMethod={setMethod}
+            cashInfo={cashInfo}
           ></CashDepositStepGroup>
         </VStack>
       </Container>
@@ -57,3 +55,12 @@ const CashDepositPage = () => {
 };
 
 export default CashDepositPage;
+
+export async function getServerSideProps() {
+  const cashInfo = await readMyCash();
+  return {
+    props: {
+      cashInfo: cashInfo,
+    }, // will be passed to the page component as props
+  };
+}

@@ -17,5 +17,5 @@ export const API_BASE_URL = "https://naso-media-backend.herokuapp.com/api/v1"
   * TOSS CONSTANT
   */
  export const TOSS_CLIENT_KEY = 'test_ck_OyL0qZ4G1VO0P1vdBLvroWb2MQYg';
- export const TOSS_SUCCESSS_URL = '/';
- export const TOSS_FAIL_URL = '/';
+ export const TOSS_SUCCESSS_URL = '/payment/success';
+ export const TOSS_FAIL_URL = '/payment/fail';

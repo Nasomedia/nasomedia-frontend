@@ -23,6 +23,18 @@ module.exports = withPWA({
         ],
         permanent: false,
       },
+      {
+        source: "/payment/:slug*",
+        destination: "/",
+        has: [
+          {
+            type: "cookie",
+            key: "authorized",
+            value: "false"
+          },
+        ],
+        permanent: false,
+      },
     ];
   },
 });

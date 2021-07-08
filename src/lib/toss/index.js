@@ -10,18 +10,20 @@ async function load() {
   return await loadTossPayments(TOSS_CLIENT_KEY);
 }
 
-async function requestPayment(type, amount, orderId, orderName, kwargs = {}) {
-  tossPayments = await load();
+async function requestPayment(type, amount, orderId, orderName) {
+  try {
+    const tossPayments = await load();
 
-  params = {
-    amount: amount,
-    orderId: orderId,
-    orderName: orderName,
-    successUrl: window.location.origin + TOSS_SUCCESSS_URL,
-    failUrl: window.location.origin + TOSS_FAIL_URL,
-    ...kwargs,
-  };
-  tossPayments.requestPayment(type, params);
+    await tossPayments.requestPayment(`${type}`, {
+      amount: amount,
+      orderName: orderName,
+      successUrl: window.location.origin + TOSS_SUCCESSS_URL,
+      failUrl: window.location.origin + TOSS_FAIL_URL,
+      orderId: orderId,
+    });
+  } catch (e) {
+    throw e;
+  }
 }
 
 export { load, requestPayment };

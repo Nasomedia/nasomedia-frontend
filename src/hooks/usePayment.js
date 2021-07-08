@@ -4,7 +4,6 @@ import { read_user_me } from "../lib/api";
 import { removeToken } from "../lib/setToken";
 import {
   setAction,
-  setUrlAction,
   setAmountAction,
   setMethodAction,
   setOrderNameAction,
@@ -16,9 +15,6 @@ export default function usePayment() {
     amount,
     orderId,
     orderName,
-    customerName,
-    successUrl,
-    failUrl,
   } = useSelector((state) => state.payment);
   const dispatch = useDispatch();
 
@@ -38,22 +34,15 @@ export default function usePayment() {
     dispatch(setOrderNameAction({ orderName: orderName }));
   }, []);
 
-  const setUrl = useCallback((urlData) => {
-    dispatch(setUrlAction(urlData));
-  }, []);
 
   return {
     method,
     amount,
     orderId,
     orderName,
-    customerName,
-    successUrl,
-    failUrl,
     set,
     setMethod,
     setAmount,
     setOrderName,
-    setUrl,
   };
 }

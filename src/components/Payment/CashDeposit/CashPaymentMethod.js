@@ -7,7 +7,6 @@ import {
   RadioGroup,
   Heading,
 } from "@chakra-ui/react";
-import { CashStat } from "./CashStat";
 
 const PaymentMethodBox = ({ value }) => {
   return (
@@ -19,8 +18,8 @@ const PaymentMethodBox = ({ value }) => {
   );
 };
 
-export const CashPaymentMethod = ({ setMethod, method, amount }) => {
-  const methodList = ["카드", "가상계좌"];
+export const CashPaymentMethod = ({ setMethod, method }) => {
+  const methodList = ["카드", "문화상품권", "도서문화상품권"];
   return (
     <>
       <RadioGroup mt={"6px"} onChange={(e) => setMethod(e)} value={method}>

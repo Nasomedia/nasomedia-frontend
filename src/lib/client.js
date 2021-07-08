@@ -8,6 +8,21 @@ const client = axios.create({
 });
 client.interceptors.request.use(
   function (config) {
+    if (typeof document === "object" && typeof document.cookie === "string") {
+      function getCookie(name) {
+        let matches = document.cookie.match(
+          new RegExp(
+            "(?:^|; )" +
+              name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+              "=([^;]*)"
+          )
+        );
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+      }
+      const token = getCookie("token");
+      config.headers.Authorization = "Bearer " + token;
+      return config;
+    }
     config.headers.Authorization = axios.defaults.headers.Authorization;
     return config;
   },

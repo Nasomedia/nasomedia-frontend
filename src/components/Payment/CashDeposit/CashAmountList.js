@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, VStack, Radio, StackDivider, RadioGroup } from "@chakra-ui/react";
 import { CashStat } from "./CashStat";
+import { readMyCash } from "../../../lib/api/cash";
 
 const CashAmountBox = ({ value }) => {
   return (
@@ -12,11 +13,11 @@ const CashAmountBox = ({ value }) => {
   );
 };
 
-export const CashAmountList = ({ step, setAmount, amount }) => {
+export const CashAmountList = ({ balance, setAmount, amount }) => {
   const amountList = [1000, 3000, 5000, 10000, 30000, 50000];
   return (
     <>
-      <CashStat cash={0}>캐시 잔고</CashStat>
+      <CashStat cash={balance}>캐시 잔고</CashStat>
       <RadioGroup mt={"6px"} onChange={setAmount} value={amount}>
         <VStack
           paddingY={"24px"}

@@ -15,8 +15,10 @@ import usePayment from "../../../hooks/usePayment";
 import { CashPaymentMethod } from "./CashPaymentMethod";
 import { CashStat } from "./CashStat";
 import { requestPayment } from "../../../lib/toss";
+import { createPaymentOrder } from "../../../lib/api/payment";
+import { useToast } from "@chakra-ui/react";
 
-export const CashDepositStepGroup = () => {
+export const CashDepositStepGroup = ({ cashInfo }) => {
   const {
     amount,
     setAmount,
@@ -30,6 +32,9 @@ export const CashDepositStepGroup = () => {
   const termsRef = React.useRef();
   const [isTermsChecked, setIsTermsChecked] = React.useState(false);
 
+  const [isLoading, setIsLoading] = React.useState(false);
+  const toast = useToast();
+
   return (
     <>
       {step === 0 && (
@@ -41,7 +46,7 @@ export const CashDepositStepGroup = () => {
           >
             <CashDepositStack>
               <CashAmountList
-                step={0}
+                balance={cashInfo.amount}
                 amount={amount}
                 setAmount={setAmount}
               ></CashAmountList>
@@ -96,6 +101,8 @@ export const CashDepositStepGroup = () => {
         )}
         <Button
           colorScheme="purple"
+          isLoading={isLoading}
+          loadingText={"요청중"}
           disabled={
             (step === 0 && amount === 0) ||
             (step === 1 && (method === "" || !isTermsChecked))
@@ -108,15 +115,40 @@ export const CashDepositStepGroup = () => {
               ? "solid"
               : "outline"
           }
-          onClick={() => {
+          onClick={async () => {
             if (step !== 1) {
               setStep(1);
             }
             if (step === 1 && amount !== 0 && method !== "" && isTermsChecked) {
-              useEffect(() => {
-                // await
-                // await requestPayment(method, amount, orderId, orderName)
-              }, []);
+              try {
+                setIsLoading(true);
+                setOrderName(`캐시 충전 ${amount}원`);
+                const order = await createPaymentOrder(amount, cashInfo.id);
+                setIsLoading(false);
+                await requestPayment(
+                  method,
+                  amount,
+                  order.id,
+                  `나소미디어 캐시 충전 ${amount}원`
+                );
+              } catch (e) {
+                if (e.message === "취소되었습니다") {
+                  toast({
+                    title: e.message,
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                } else {
+                  toast({
+                    title: "알 수 없는 이유로 결제가 진행되지 못했습니다.",
+                    description: "지속된다면 문의하여 주십시오",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                }
+              }
             }
           }}
         >
