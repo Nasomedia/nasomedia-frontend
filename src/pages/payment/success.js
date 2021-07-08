@@ -14,13 +14,7 @@ import {
   CashDepositStack,
 } from "../../components/Payment/CashDeposit";
 import { requestAckPayment } from "../../lib/api/payment";
-import {
-  Table,
-  Tbody,
-  Tr,
-  Td,
-  TableCaption,
-} from "@chakra-ui/react";
+import { Table, Tbody, Tr, Td, TableCaption } from "@chakra-ui/react";
 
 const CashDepositSuccessPage = ({ cashInfo, cashDepositInfo, ackInfo }) => {
   const router = useRouter();
@@ -54,6 +48,7 @@ const CashDepositSuccessPage = ({ cashInfo, cashDepositInfo, ackInfo }) => {
                   colorScheme="purple"
                   fontSize={"small"}
                   marginBottom={"3"}
+                  size={{ base: "sm", md: "md" }}
                 >
                   <TableCaption placement={"top"}>결제 정보</TableCaption>
                   <Tbody>
@@ -115,11 +110,11 @@ export default CashDepositSuccessPage;
 
 export async function getServerSideProps(context) {
   const { paymentKey, orderId, amount } = context.query;
-    const [cash, cashDeposit, ackInfo] = await requestAckPayment(
-      paymentKey,
-      orderId,
-      amount
-    );
+  const [cash, cashDeposit, ackInfo] = await requestAckPayment(
+    paymentKey,
+    orderId,
+    amount
+  );
   return {
     props: {
       cashInfo: cash,
