@@ -4,6 +4,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 import { userSlice } from "./user";
 import { paymentSlice } from "./payment";
+import { cashSlice } from "./cash";
 
 export const reducer = (state = {}, action) => {
   if (action.type === HYDRATE) {
@@ -15,5 +16,6 @@ export const reducer = (state = {}, action) => {
   return combineReducers({
     [userSlice.name]: userSlice.reducer,
     [paymentSlice.name]: paymentSlice.reducer,
+    [cashSlice.name]: cashSlice.reducer,
   })(state, action);
 };
