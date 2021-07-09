@@ -16,7 +16,3 @@ export default function Ranking() {
     </MainLayout>
   );
 }
-
-export async function getStaticProps() {
-  return { props: {} };
-}

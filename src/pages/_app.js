@@ -11,10 +11,10 @@ import { PWA } from "../components/PWA";
 import { useEffect } from "react";
 import cookies from "next-cookies";
 import { setToken, removeToken } from "../lib/setToken";
-import useUser from "../hooks/useUser";
-import { read_user_me } from "../lib/api";
+import { readMyCash, read_user_me } from "../lib/api";
 import { wrapper } from "../store";
 import { loginAction } from "../slices/user";
+import { setAction } from "../slices/cash";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -77,8 +77,10 @@ MyApp.getInitialProps = async (appContext) => {
   if (tokenByCookie !== undefined && tokenByCookie !== "") {
     setToken(tokenByCookie);
     const user = await read_user_me();
+    const cashInfo = await readMyCash();
     if (!state.user.isLoggedIn) {
       ctx.store.dispatch(loginAction(user));
+      ctx.store.dispatch(setAction(cashInfo)); // set Cash
       setIsAuthCookie(true);
     } else {
       setIsAuthCookie(false);

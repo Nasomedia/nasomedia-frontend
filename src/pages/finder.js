@@ -16,7 +16,3 @@ export default function Finder() {
     </MainLayout>
   );
 }
-
-export async function getStaticProps() {
-  return { props: {} };
-}
