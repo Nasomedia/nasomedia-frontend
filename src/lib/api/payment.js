@@ -19,6 +19,16 @@ export const createPaymentOrder = async (
     return null;
   }
 };
+export const deletePaymentOrder = async (order_id) => {
+  const url = `/payments/order/${order_id}`;
+  try {
+    const res = await client.delete(url);
+    return res.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
 
 export const requestAckPayment = async (payment_key, order_id, amount) => {
   const url = `/payments/ack?payment_key=${payment_key}&order_id=${order_id}&amount=${amount}`;

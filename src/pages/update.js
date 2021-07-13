@@ -96,7 +96,7 @@ export default function Updates({ initialUpdates }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const updates = await readSeriesesByUpdate(0, 100);
   return {
     props: { initialUpdates: updates }, // will be passed to the page component as props

@@ -102,6 +102,7 @@ export const CashDepositStepGroup = ({ cashInfo }) => {
         <Button
           colorScheme="purple"
           isLoading={isLoading}
+          isDisabled={isLoading}
           loadingText={"요청중"}
           disabled={
             (step === 0 && amount === 0) ||
@@ -124,13 +125,13 @@ export const CashDepositStepGroup = ({ cashInfo }) => {
                 setIsLoading(true);
                 setOrderName(`캐시 충전 ${amount}원`);
                 const order = await createPaymentOrder(amount, cashInfo.id);
-                setIsLoading(false);
                 await requestPayment(
                   method,
                   amount,
                   order.id,
                   `나소미디어 캐시 충전 ${amount}원`
                 );
+                setIsLoading(false);
               } catch (e) {
                 if (e.message === "취소되었습니다") {
                   toast({

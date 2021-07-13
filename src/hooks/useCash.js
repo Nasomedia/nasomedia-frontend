@@ -9,13 +9,13 @@ export default function useCash() {
   );
   const dispatch = useDispatch();
 
-  const set = useCallback((userData) => {
-    dispatch(setAction(userData));
+  const set = useCallback((cashData) => {
+    dispatch(setAction(cashData));
   }, []);
 
   const set_has_token = useCallback(async () => {
-    const userData = await readMyCash();
-    set(userData);
+    const cashData = await readMyCash();
+    set(cashData);
   });
 
   return { amount, id, user_id, deposit, usage, set, set_has_token };

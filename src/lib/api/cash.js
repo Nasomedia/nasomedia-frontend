@@ -1,7 +1,7 @@
 import client from "../client";
 
 export const readMyCash = async () => {
-  const url = `/cash`;
+  const url = `/cash/`;
   const options = {
     method: "GET",
     url,

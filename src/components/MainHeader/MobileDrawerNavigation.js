@@ -14,9 +14,11 @@ import {
   Button,
   Divider,
   useColorMode,
+  Text,
 } from "@chakra-ui/react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useEffect } from "react";
+import useCash from "../../hooks/useCash";
 
 const ColorModeButton = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -219,7 +221,7 @@ const MobileDrawerLinks = ({ isLoggedIn, user, logout, router }) => {
 
 export const MobileDrawerNavigation = ({ isLoggedIn, user, logout }) => {
   const router = useRouter();
-
+  const { amount } = useCash();
   return (
     <DrawerContent>
       <DrawerHeader>
@@ -232,9 +234,25 @@ export const MobileDrawerNavigation = ({ isLoggedIn, user, logout }) => {
                 <br /> 환영합니다!
               </Heading>
               <Button
+                onClick={() => router.push("/user/me/cash")}
+                colorScheme="purple"
+                variant="ghost"
+                justifyContent={"space-between"}
+                mt={"var(--chakra-space-4)!important"}
+                fontSize={"0.95rem"}
+                paddingInlineStart={"2"}
+                paddingInlineEnd={"2"}
+              >
+                <Text color={useColorModeValue("gray.600", "gray.400")}>
+                  내 캐시
+                </Text>
+                <Text color={useColorModeValue("purple.600", "purple.400")}>{amount.toLocaleString()}원</Text>
+              </Button>
+              <Button
                 onClick={() => router.push("/notifications")}
                 colorScheme="purple"
                 variant="outline"
+                mt={"var(--chakra-space-2)!important"}
               >
                 알림
               </Button>

@@ -15,9 +15,13 @@ import {
 } from "../../components/Payment/CashDeposit";
 import { requestAckPayment } from "../../lib/api/payment";
 import { Table, Tbody, Tr, Td, TableCaption } from "@chakra-ui/react";
+import { setAction } from "../../slices/cash";
+import { useDispatch } from "react-redux";
 
 const CashDepositSuccessPage = ({ cashInfo, cashDepositInfo, ackInfo }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+  dispatch(setAction(cashInfo));
 
   return (
     <MainLayout>
