@@ -19,9 +19,9 @@ import useCash from "../../../hooks/useCash";
 import { useEffect } from "react";
 import CommingSoon from "../../../components/CommingSoon";
 import { useRouter } from "next/router";
+import PlaceholderLogo from "../../../components/PlaceholderLogo";
 
 const DepositList = ({ deposit }) => {
-
   return [...deposit].reverse().map((deposit, idx) => (
     <Box
       key={idx + "-deposit"}
@@ -45,7 +45,7 @@ const DepositList = ({ deposit }) => {
           <Text fontSize={"sm"}>
             {deposit.approved_at
               ? new Date(deposit.approved_at).toLocaleDateString()
-              : `미결제(${ new Date(deposit.request_at).toLocaleDateString()})`}
+              : `미결제(${new Date(deposit.request_at).toLocaleDateString()})`}
           </Text>
         </Box>
         <Box
@@ -110,7 +110,17 @@ export default function MyCash() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <DepositList deposit={deposit} />
+              {deposit.length > 0 ? (
+                <DepositList deposit={deposit} />
+              ) : (
+                <>
+                  <Spacer mt={"10vh"} />
+                  <PlaceholderLogo
+                    isBounce={false}
+                    description={"충전한 내역이 없습니다"}
+                  />
+                </>
+              )}
             </TabPanel>
             <TabPanel>
               <CommingSoon />
