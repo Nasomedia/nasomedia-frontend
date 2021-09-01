@@ -15,10 +15,23 @@ export async function readSeries(id) {
   }
 }
 
-export async function readSeriesesByUpdate(skip, limit) {
+export async function readSeriesMultiple(
+  skip,
+  limit,
+  sortBy,
+  orderBy,
+  title,
+  isComplete,
+  keyword
+) {
   try {
     const res = await fetcher(
-      `${getURL()}/update?skip=${skip ? skip : 0}&limit=${limit ? limit : 20}`
+      `${getURL()}/?skip=${skip ? skip : 0}&limit=${limit ? limit : 20}` +
+        `${sortBy ? "&sort_by=" + sortBy : ""}` +
+        `${orderBy ? "&order_by=" + orderBy : ""}` +
+        `${title ? "&title=" + title : ""}` +
+        `${isComplete ? "&is_complete=" + isComplete : ""}` +
+        `${keyword ? "&keyword=" + keyword : ""}`
     );
     if (Array.isArray(res)) {
       return res;

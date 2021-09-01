@@ -14,7 +14,7 @@ import fetcher from "../lib/fetch";
 import { UpdateSeriesList } from "../components/SeriesList/UpdateSeriesList";
 import { API_BASE_URL } from "../constants";
 import { MainLayout } from "../layout/MainLayout";
-import { readSeriesesByUpdate } from "../lib/api";
+import { readSeriesMultiple } from "../lib/api";
 import { MdRefresh } from "react-icons/md";
 import { useEffect } from "react";
 
@@ -22,7 +22,7 @@ const PAGE_SIZE = 20;
 
 const getKey = (pageIndex, previousPageData) => {
   if (previousPageData && !previousPageData.length) return null; // reached the end
-  return `${API_BASE_URL}/series/update?skip=${pageIndex}&limit=${PAGE_SIZE}`; // SWR key
+  return `${API_BASE_URL}/series/?skip=${pageIndex}&limit=${PAGE_SIZE}&sort_by=update_at&order_by=desc`; // SWR key
 };
 
 export default function Updates({ initialUpdates }) {
@@ -97,7 +97,7 @@ export default function Updates({ initialUpdates }) {
 }
 
 export async function getServerSideProps() {
-  const updates = await readSeriesesByUpdate(0, 100);
+  const updates = await readSeriesMultiple(0, 100, "update_at", "desc");
   return {
     props: { initialUpdates: updates }, // will be passed to the page component as props
   };
